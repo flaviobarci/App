@@ -7,7 +7,7 @@ Before going into details, make sure that NodeJS is installed in your laptop (he
 
 Globally install Expo CLI command line utility:
 
-'''
+'''shell
 npm install -g expo-cli
 '''
 
