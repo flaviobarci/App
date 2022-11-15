@@ -1,1 +1,7 @@
 # App
+
+## How to run our application
+
+Before going into details, make sure that NodeJS is installed in your laptop (here tutorial for the installation https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-overview) and also ReactNative, which is a dependecy of React, used to develop applications (here the tutorial for the installation https://learn.microsoft.com/en-us/windows/dev-environment/javascript/react-overview). Also, install Expo Go on your mobile device, to visualize the application later on.
+Furthermore, to initialize a new project, run in the terminal your root folder path, where the application folder will be stored, with the command *cd "path_of_the_folder"*. Inside our main folder, now we can create our project by running *npx create-expo-app
+To be able to run our application it is needed to open the folder with the application files inside any editor. The first step is to open the terminal of the editor and run *cd "path_of_the_folder"* to be directed inside the folder of our application. The second step is to run *npx create-expo-app "name_of_the_app"* which will create the application folder with the needed files and then run the command *cd "name_of_the_app"* to be directed inside the folder. Once there, run the command *npx expo start* wchich will generate a QR code that you need to scan through Expo Go on your movile device. An interface will be showed on your device with what is written inside the file App.js, where all the interface change will be made.
