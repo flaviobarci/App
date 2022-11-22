@@ -61,7 +61,8 @@ On Android, use the Expo app to scan the QR code from your terminal to open your
 On iOS, use the built-in QR code scanner of the Camera app.
 
 
-##cRun Cypress tests
+
+## Run Cypress tests
 
 To test our application we can use Cypress. The first step is to open our IDE with the application folder and run the following command in the terminal:
 
