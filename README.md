@@ -64,13 +64,8 @@ On iOS, use the built-in QR code scanner of the Camera app.
 
 ## Run Cypress tests
 
-To test our application we can use Cypress. The first step is to open our IDE with the application folder and run the following command in the terminal:
 
-```
-npx expo install react-native-web@~0.18.9 react-dom@18.1.0 @expo/webpack-config@^0.17.2npm
-```
-
-This will allow you to get a web page of our application running on your browser. To see this, open a new terminal and run the application. You will see our QR code and under, few press commands. Run the following command in the terminal where the application is running:
+To allow you to get a web page of our application running on your browser open a new terminal and run the application. You will see our QR code and under, few press commands. Run the following command in the terminal where the application is running:
 
 ```
 w
