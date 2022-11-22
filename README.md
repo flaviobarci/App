@@ -78,34 +78,15 @@ w
 
 A web page will automatically open in your browser which will display the application.
 At this point, we can set up Cypress (here the full explanation of the installation methods https://docs.cypress.io/guides/getting-started/installing-cypress#What-you-ll-learn). 
-Open a new terminal and open the path of the application folder and run:
 
-```
-npm install cypress --save-dev
-```
-
-Now you can open Cypress from your project root one of the following ways:
+Now you can open Cypress from your project root:
 
 ```
 npx cypress open
 ```
 
 A new window from Cypress will open with the name of your application main folder. There you can choose E2E testing or Component testing. For our application we used E2E testing. Launch your favourite browser.
-Now it's time to add your first test. We're going to do this with the "Create new empty spec" button and click create spec. Leave the default name spec.cy.js for now. The file will also open in your IDE. Go to your IDE and open the folder cypress/e2e/spec.cy.js fix the existing test code with the following code:
 
-```
-describe('My First Test', () => {
-  it('Visits our Application', () => {
-    cy.visit('http://localhost:19006/')
-  })
-})
-```
-
-Where *http://localhost:19006/* is the URL obtained from opening our application on a web page previously.
-Cypress monitors your spec files for any changes and automatically displays any changes.
-
-Now we can open the spec.cy.js file in our Cypress window inside the option "Specs" which are also displayed as the first interface as well.
-By clicking our file an empty web page will open on the right side of the screen, while our test (passed or failed) stays on the left. In the web page we need to paste the our URL (http://localhost:19006/) in the search bar and click the botton on the left of the bar. This will test the application and it will allow us to visualize it.
 
 
 
