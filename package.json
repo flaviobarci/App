@@ -6,20 +6,40 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "prettier": "prettier 'src/**/*.js'",
+    "precommit": "lint-staged"
   },
   "dependencies": {
+    "@expo/webpack-config": "^0.17.2",
     "cypress": "^11.1.0",
     "expo": "~47.0.3",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
-    "react-native": "0.70.5",
-    "react-native-web": "~0.18.9",
     "react-dom": "18.1.0",
-    "@expo/webpack-config": "^0.17.2"
+    "react-native": "0.70.5",
+    "react-native-web": "~0.18.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.28.0",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-native": "^4.0.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.8.0"
+  },
+  "prettier": {
+    "jsxBracketSameLine": true,
+    "semi": false,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "private": true
 }
