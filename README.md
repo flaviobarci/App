@@ -59,3 +59,30 @@ and this will start a development server.
 
 On Android, use the Expo app to scan the QR code from your terminal to open your project.
 On iOS, use the built-in QR code scanner of the Camera app.
+
+
+
+## Run Cypress tests
+
+
+To allow you to get a web page of our application running on your browser open a new terminal and run the application. You will see our QR code and under, few press commands. Run the following command in the terminal where the application is running:
+
+```
+w
+```
+
+A web page will automatically open in your browser which will display the application.
+At this point, we can set up Cypress (here the full explanation of the installation methods https://docs.cypress.io/guides/getting-started/installing-cypress#What-you-ll-learn). 
+
+Now you can open Cypress from your project root:
+
+```
+npx cypress open
+```
+
+A new window from Cypress will open with the name of your application main folder. There you can choose E2E testing or Component testing. For our application we used E2E testing. Launch your favourite browser.
+
+
+
+
+
