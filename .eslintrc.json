@@ -6,7 +6,12 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "standard",
+        "prettier",
+        "prettier/flowtype",
+        "prettier/react",
+        "prettier/standard"
     ],
     "overrides": [
     ],
@@ -21,7 +26,12 @@
     },
     "plugins": [
         "react",
-        "react-native"
+        "react-native",
+        "react",
+        "react-native",
+        "flowtype",
+        "prettier",
+        "standard"
     ],
     "rules": {
         "react-native/no-unused-styles": 2,
@@ -29,5 +39,8 @@
         "react-native/no-inline-styles": 2,
         "react-native/no-color-literals": 2,
         "react-native/no-raw-text": 2
+    },
+    "scripts": {
+        "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
     }
 }
