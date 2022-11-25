@@ -19,7 +19,8 @@ jobs:
           npm install
       - name: Running project
         run: |
-          npm run web
+          daemon --name="app" npm run web
+
       - name: Cypress test
         run: |
           npx cypress run --headed
