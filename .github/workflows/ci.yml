@@ -9,20 +9,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      
       - name: Setup Nodejs
         uses: actions/setup-node@v3.5.1
+      
       - name: Install dependencies
         run: |
           npm install
+      
       - name: Running project
         run: |
-          npm run web
-      - name: Cypress test
-        run: |
-          npx cypress run --headed
+          npm run web &
+      
+      - uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
+          headed: true
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
