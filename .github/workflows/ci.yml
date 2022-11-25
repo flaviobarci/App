@@ -19,7 +19,7 @@ jobs:
           npm install
       - name: Running project
         run: |
-          daemon --name="app" npm run web
+          npm run web &
 
       - name: Cypress test
         run: |
