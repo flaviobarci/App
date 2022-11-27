@@ -25,8 +25,8 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
           
-      - name: 🚀 Publish app
-        run: npm run deploy
+      - name: 🚀 Deploy 
+        uses: JamesIves/github-pages-deploy-action@v4
           
       - uses: cypress-io/github-action@v4
         with:
