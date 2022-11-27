@@ -38,7 +38,7 @@ jobs:
           headed: true
         continue-on-error: true
         env: 
-          URL: ${{ secrets.URL }}
+          BASE_URL: ${{ secrets.BASE_URL }}
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
