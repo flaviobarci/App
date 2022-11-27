@@ -28,6 +28,7 @@
     "@babel/core": "^7.12.9",
     "@cypress/code-coverage": "^3.10.0",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-istanbul": "^6.1.1",
     "cypress-sonarqube-reporter": "^1.11.0",
     "eslint": "^8.28.0",
     "eslint-plugin-react": "^7.31.11",
