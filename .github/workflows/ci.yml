@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,6 +14,9 @@ jobs:
       
       - name: Setup Nodejs
         uses: actions/setup-node@v3.5.1
+      
+      - name: 📦 Install dependencies
+        run: npm ci
           
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@v7
@@ -23,21 +24,15 @@ jobs:
           expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 📦 Install dependencies
-        run: npm ci
-
-      - name: 🚀 Publish preview
-        run: expo publish --release-channel=pr-${{ github.event.number }} --non-interactive
-
-      - name: 💬 Comment preview
-        uses: expo/expo-github-action/preview-comment@v7
-        with:
-          channel: pr-${{ github.event.number }}
+      - name: 🚀 Publish app
+        run: expo publish --non-interactive
           
       - uses: cypress-io/github-action@v4
         with:
           browser: chrome
           headed: true
+        env: 
+          URL: ${{ secrets.URL }}
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
