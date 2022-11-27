@@ -8,6 +8,9 @@ module.exports = defineConfig({
     "reporter": "cypress-sonarqube-reporter",
     "reporterOptions": {
         "overwrite": true
+    },
+    "env": {
+      BASE_URL: 'http://localhost:19006'
     }
-  },
+  }
 });
