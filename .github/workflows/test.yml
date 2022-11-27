@@ -18,5 +18,4 @@ jobs:
           browser: chrome
           env: BASE_URL=${{ secrets.BASE_URL }}
           quiet: false
-        env: 
-          BASE_URL: ${{ secrets.BASE_URL }}
+
