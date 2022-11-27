@@ -25,7 +25,7 @@ jobs:
         run: npm ci
           
       - name: 🚀 Publish app
-        run: expo publish --non-interactive
+        run: npm run deploy
           
       - uses: cypress-io/github-action@v4
         with:
