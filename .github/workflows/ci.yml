@@ -36,6 +36,7 @@ jobs:
         with:
           browser: chrome
           headed: true
+        continue-on-error: true
         env: 
           URL: ${{ secrets.URL }}
 
