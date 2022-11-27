@@ -35,9 +35,8 @@ jobs:
       - uses: cypress-io/github-action@v4
         with:
           browser: chrome
-          headed: false
-        env: 
-          BASE_URL: ${{ secrets.BASE_URL }}
+          env: BASE_URL=${{ secrets.BASE_URL }}
+          quiet: false
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
