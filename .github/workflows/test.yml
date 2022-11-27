@@ -16,7 +16,7 @@ jobs:
       - uses: cypress-io/github-action@v4
         with:
           browser: chrome
-          env: ${{ secrets.BASE_URL }}
+          env: BASE_URL=${{ secrets.BASE_URL }}
           quiet: false
         env: 
           BASE_URL: ${{ secrets.BASE_URL }}
