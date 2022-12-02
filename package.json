@@ -14,7 +14,7 @@
     "predeploy": "expo export:web",
     "np": "np --no-publish",
     "postversion": "react-native-version",
-    "test": "jest"
+    "test": "test"
   },
   "repository": {
     "type": "git",
