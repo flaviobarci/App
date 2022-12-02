@@ -11,8 +11,16 @@
     "prettier": "prettier App.js",
     "precommit": "lint-staged",
     "deploy": "gh-pages -d web-build",
-    "predeploy": "expo export:web"
+    "predeploy": "expo export:web",
+    "np": "np --no-publish",
+    "postversion": "react-native-version"
   },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WS22-23-SWEPM3ILV-INF-BA-VZ-Group-2/App.git"
+  },
+
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
     "cypress": "^11.2.0",
