@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "version": "1.0.0",
+  "version": "1.0.1-0",
   "main": "node_modules/expo/AppEntry.js",
   "homepage": "http://WS22-23-SWEPM3ILV-INF-BA-VZ-Group-2.github.io/App",
   "scripts": {
