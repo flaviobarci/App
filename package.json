@@ -13,7 +13,8 @@
     "deploy": "gh-pages -d web-build",
     "predeploy": "expo export:web",
     "np": "np --no-publish",
-    "postversion": "react-native-version"
+    "postversion": "react-native-version",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
