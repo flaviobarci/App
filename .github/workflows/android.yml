@@ -4,7 +4,7 @@ on:
     branches : main
     
 jobs:
-  Build-for-android:
+  Android:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -29,7 +29,9 @@ jobs:
         run: npm install
       
       - name: 🌀 Build Android APK Bundle
-        run: eas build --non-interactive --platform android
+        run: |
+          eas init --force --non-interactive
+          eas build --non-interactive --platform android
       
       - name: 🔔 Create release
         id: create_release
