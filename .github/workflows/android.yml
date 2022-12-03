@@ -30,7 +30,7 @@ jobs:
       
       - name: 🌀 Build Android APK Bundle
         run: |
-          eas init --force --non-interactive
+          eas init --non-interactive
           eas build --non-interactive --platform android
       
       - name: 🔔 Create release
