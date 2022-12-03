@@ -1,10 +1,8 @@
-# token -> l24tHy8JnHTvXpxbrW8ebJkYykqh8vFXyibnU9Kc
-
-
+name: Publish
 on:
   push:
     branches:
-      - main
+      - dev
 jobs:
   publish:
     runs-on: ubuntu-latest
