@@ -8,24 +8,29 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 12.x
-          cache: yarn
-      - uses: actions/setup-java@v3.7.0
+      
+      - name: 🟩 Setup Nodejs
+        uses: actions/setup-node@v3.5.1
+      
+      - name: ♨️ Setup Java
+        uses: actions/setup-java@v3.7.0
         with:
           java-version: '17' 
           distribution: oracle
-      - uses: expo/expo-github-action@7.2.0
+      
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
         with:
           expo-version: latest
-          eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: Install deps
+          
+      - name: ⏬ Install dependencies
         run: npm install
-      - name: Build Android APK Bundle
+      
+      - name: 🌀 Build Android APK Bundle
         run: expo build:android
-      - name: Create release
+      
+      - name: 🔔 Create release
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -39,7 +44,8 @@ jobs:
             - Second Change
           draft: true
           prerelease: false
-      - name: Upload release asset
+      
+      - name: ⏫ Upload release asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,7 +54,8 @@ jobs:
           asset_path: ./path/to/asset.zip
           asset_name: asset.zip
           asset_content_type: application/zip
-      - name: Publish release
+      
+      - name: 🏁 Publish release
         uses: StuYarrow/publish-release@v1.1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
