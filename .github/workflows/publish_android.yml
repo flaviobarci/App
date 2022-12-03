@@ -29,7 +29,7 @@ jobs:
         run: npm install
       
       - name: 🌀 Build Android APK Bundle
-        run: expo build:android
+        run: eas build --platform android
       
       - name: 🔔 Create release
         id: create_release
