@@ -19,6 +19,7 @@ const Login = (props) => {
         
           }}>
           Login
+          
         </Text>
         <View
           style={{
