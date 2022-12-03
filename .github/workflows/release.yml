@@ -9,6 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      
       - name: Download APK
         run: | 
           APK=$(eas build:list --limit 1 --non-interactive | grep -o 'https://[^ "<]*.apk')
