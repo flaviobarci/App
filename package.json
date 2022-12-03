@@ -21,15 +21,17 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
+    "@react-navigation/native": "^6.0.16",
+    "@react-navigation/native-stack": "^6.9.4",
     "cypress": "^11.2.0",
     "expo": "~47.0.3",
     "expo-status-bar": "~1.4.2",
+    "expo-updates": "~0.15.6",
     "gh-pages": "^4.0.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
-    "react-native-web": "~0.18.9",
-    "expo-updates": "~0.15.6"
+    "react-native-web": "~0.18.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
