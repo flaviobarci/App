@@ -13,8 +13,7 @@ jobs:
       - uses: actions/setup-java@v3.7.0
         with:
           java-version: '11' 
-          distribution: jdk
-          architecture: x64
+          distribution: oracle
       - uses: expo/expo-github-action@7.2.0
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
