@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: 🟩 Setup Nodejs
+      - name: ❇️ Setup Nodejs
         uses: actions/setup-node@v3.5.1
       
       - name: ♨️ Setup Java
@@ -22,9 +22,10 @@ jobs:
         uses: expo/expo-github-action@v7
         with:
           expo-version: latest
+          eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
           
-      - name: ⏬ Install dependencies
+      - name: 📦 Install dependencies
         run: npm install
       
       - name: 🌀 Build Android APK Bundle
@@ -45,7 +46,7 @@ jobs:
           draft: true
           prerelease: false
       
-      - name: ⏫ Upload release asset
+      - name: 🚀 Upload release asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
