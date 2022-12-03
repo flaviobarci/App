@@ -18,4 +18,5 @@ export default function Btn({bgColor, btnLabel, textColor, Press}) {
       </Text>
     </TouchableOpacity>
   );
+  
 }
