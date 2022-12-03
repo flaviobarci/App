@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-java@v3.7.0
         with:
           java-version: '11' 
-          java-package: jdk
+          distribution: jdk
           architecture: x64
       - uses: expo/expo-github-action@7.2.0
         with:
