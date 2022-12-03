@@ -1,6 +1,4 @@
-# token -> l24tHy8JnHTvXpxbrW8ebJkYykqh8vFXyibnU9Kc
-
-
+name: Publish
 on:
   push:
     branches:
