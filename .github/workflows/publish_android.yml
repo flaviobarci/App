@@ -1,3 +1,4 @@
+name: Android
 on:
   push :
     branches : main
@@ -10,6 +11,7 @@ jobs:
       - uses: actions/setup-node@v3.5.1
         with:
           node-version: 12.x
+          cache: yarn
       - uses: actions/setup-java@v3.7.0
         with:
           java-version: '17' 
