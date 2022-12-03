@@ -30,7 +30,7 @@ jobs:
       
       - name: 🌀 Build Android APK Bundle
         run: |
-          eas init --non-interactive
+          eas init --non-interactive --id ${{ secrets.EXPO_PROJECT_ID }}
           eas build --non-interactive --platform android
       
       - name: 🔔 Create release
