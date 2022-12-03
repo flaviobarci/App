@@ -1,8 +1,8 @@
-name: Build
+name: Pipeline
 on:
   push:
     branches:
-      - main
+      - dev
 jobs:
   build:
     runs-on: ubuntu-latest
