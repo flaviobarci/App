@@ -2,36 +2,35 @@ name: Pipeline
 on:
   push:
     branches:
-      - dev
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: ❇️ Setup Nodejs
         uses: actions/setup-node@v3.5.1
-      
+
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@v7
         with:
           expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-    
+
       - name: 📦 Install dependencies
         run: npm ci
-          
+
       - name: 🚀 Deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: 🧪 Run Cypress Test
         uses: cypress-io/github-action@v4
         with:
@@ -40,7 +39,8 @@ jobs:
           quiet: false
 
       - name: 🔍 SonarCloud Scan
+        continue-on-error: true
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

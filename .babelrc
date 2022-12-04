@@ -1,13 +1,16 @@
 {
-    "env": {
-      "test": {
-        "plugins": [
-          ["istanbul", {
-            "exclude": [
-              "**/*.spec.js"
-            ]
-          }]
-        ]
-      }
+  "presets": ["@babel/preset-react"],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "transform-class-properties",
+    "istanbul"
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    },
+    "e2e": {
+      "plugins": ["istanbul"]
     }
   }
+}
