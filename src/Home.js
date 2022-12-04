@@ -1,22 +1,24 @@
-import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import Background from './Background';
-import Btn from './Btn';
-import { darkGreen, green } from './Constants';
+import React from 'react'
+import { View, StyleSheet, Text } from 'react-native'
+import Btn from './Btn'
+import { darkGreen } from './Constants'
 
 const Home = (props) => {
   return (
-    <Background>
-      <View style={{ marginHorizontal: 40, marginVertical: 100 }}>
-      
-      <Text style={{ color: 'white', fontSize: 64, marginBottom: 100 , marginTop:90}}>UnReveal</Text>
-      <Btn bgColor={green} textColor='white' btnLabel="Login" Press={() => props.navigation.navigate("Login")} />
-      <Btn bgColor='white' textColor={darkGreen} btnLabel="Signup" Press={() => props.navigation.navigate("Signup")} />
-      </View>
-    </Background>
-  );
+    <View style={styles.view}>
+      <Text style={styles.title}>UnReveal</Text>
+      <Btn btnLabel="Login" Press={() => alert('Account already created')} />
+      <Btn
+        btnLabel="Register"
+        Press={() => props.navigation.navigate('Register')}
+      />
+    </View>
+  )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  view: { marginVertical: 100, alignItems: 'center' },
+  title: { color: darkGreen, fontSize: 64, marginBottom: 100, marginTop: 90 },
+})
 
-export default Home;
+export default Home
