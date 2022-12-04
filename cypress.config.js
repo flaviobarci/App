@@ -8,10 +8,6 @@ module.exports = defineConfig({
       require('./cypress/plugins/index.js')(on, config)
       return config
     },
-    "reporter": "cypress-sonarqube-reporter",
-    "reporterOptions": {
-        "overwrite": true
-    },
     "env": {
       BASE_URL: 'http://localhost:19006'
     }
