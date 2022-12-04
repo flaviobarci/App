@@ -6,11 +6,16 @@ const Background = ({ children }) => {
     <View>
       <ImageBackground
         source={require('../assets/road.jpg')}
-        style={{ height: '100%' }}
+        style={styles.height}
       />
-      <View style={{ position: 'absolute' }}>{children}</View>
+      <View style={styles.position}>{children}</View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  height: '100%',
+  position: 'absolute',
+})
 
 export default Background
