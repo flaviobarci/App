@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Btn from './Btn'
 import Field from './Field'
 import { darkGreen } from './Constants'
@@ -14,7 +14,7 @@ const Register = (props) => {
       <Field placeholder="Password" secureTextEntry={true} />
 
       <Btn
-        btnLabel="Register"
+        btnLabel="Let's go!"
         Press={() => {
           alert('Account already created')
         }}
