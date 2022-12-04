@@ -30,7 +30,6 @@
     "react-native",
     "react",
     "react-native",
-    "flowtype",
     "prettier",
     "standard"
   ],

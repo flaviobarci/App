@@ -7,7 +7,7 @@ const Main = (props) => {
   return (
     <View style={styles.view}>
       <Text style={styles.title}>UnReveal</Text>
-      <Btn btnLabel="Login" Press={() => alert('Account already created')} />
+      <Btn btnLabel="Login" Press={() => props.navigation.navigate('Login')} />
       <Btn
         btnLabel="Register"
         Press={() => props.navigation.navigate('Register')}
