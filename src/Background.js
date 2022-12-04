@@ -5,7 +5,7 @@ const Background = ({ children }) => {
   return (
     <View>
       <ImageBackground
-        source={require('../assets/road.jpg')}
+        source={require('../assets/road.png')}
         style={styles.height}
       />
       <View style={styles.position}>{children}</View>
