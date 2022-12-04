@@ -1,4 +1,4 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   e2e: {
@@ -8,8 +8,8 @@ module.exports = defineConfig({
       require('./cypress/plugins/index.js')(on, config)
       return config
     },
-    "env": {
-      BASE_URL: 'http://localhost:19006'
-    }
-  }
-});
+    env: {
+      BASE_URL: 'http://localhost:19006',
+    },
+  },
+})

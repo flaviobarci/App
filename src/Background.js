@@ -1,17 +1,21 @@
-import React from 'react';
-import {View, ImageBackground} from 'react-native';
+import React from 'react'
+import { View, ImageBackground } from 'react-native'
 
 const Background = ({ children }) => {
   return (
     <View>
-      <ImageBackground source={require("./assets/road.jpg")} style={{ height: '100%' }} />
-      <View style={{ position: "absolute" }}>
-        {children}
-      </View>
+      <ImageBackground
+        source={require('../assets/road.png')}
+        style={styles.height}
+      />
+      <View style={styles.position}>{children}</View>
     </View>
-  );
+  )
 }
 
-export default Background;
+const styles = StyleSheet.create({
+  height: '100%',
+  position: 'absolute',
+})
 
-
+export default Background
