@@ -29,3 +29,4 @@ cypress/videos/*
 .env
 coverage
 .nyc_output
+instrumented/
