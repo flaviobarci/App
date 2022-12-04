@@ -18,12 +18,6 @@ npm install
 
 Finally, install the Expo client app on your iOS or Android phone and connect to the same wireless network as your computer.
 
-Furthermore, to initialize a new project, run in the terminal your root folder path:
-
-```
-cd "name_of_folder"
-```
-
 Inside our main folder, now we can create our project by running:
 
 ```
