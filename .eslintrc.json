@@ -1,46 +1,45 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "react-native/react-native": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "standard",
-        "prettier",
-        "prettier/flowtype",
-        "prettier/react",
-        "prettier/standard"
-    ],
-    "overrides": [
-    ],
-    "parserOptions": {
-        "parserOptions": {
-            "ecmaFeatures": {
-               "jsx": true
-            } 
-          },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "react-native",
-        "react",
-        "react-native",
-        "flowtype",
-        "prettier",
-        "standard"
-    ],
-    "rules": {
-        "react-native/no-unused-styles": 2,
-        "react-native/split-platform-components": 2,
-        "react-native/no-inline-styles": 2,
-        "react-native/no-color-literals": 2,
-        "react-native/no-raw-text": 2
-    },
-    "scripts": {
-        "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+  "settings": {
+    "react": {
+      "version": "detect"
     }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "react-native/react-native": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "standard",
+    "prettier"
+  ],
+  "overrides": [],
+  "parserOptions": {
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-native",
+    "react",
+    "react-native",
+    "flowtype",
+    "prettier",
+    "standard"
+  ],
+  "rules": {
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/no-raw-text": 2,
+    "react/prop-types": "off"
+  }
 }

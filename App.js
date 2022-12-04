@@ -1,11 +1,18 @@
-import RegistrationScreen from './RegistrationScreen';
+import * as React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Signup from './src/Register'
 
+const Stack = createNativeStackNavigator()
 
-export default function App() {
+function App() {
   return (
-    <RegistrationScreen/>
-  );
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Register" component={Signup} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
-
-
+export default App
