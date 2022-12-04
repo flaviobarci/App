@@ -1,14 +1,23 @@
-import React from 'react';
-import {TextInput} from 'react-native';
-import {darkGreen} from './Constants';
+import React from 'react'
+import { TextInput } from 'react-native'
+import { darkGreen } from './Constants'
 
-const Field = props => {
+const Field = (props) => {
   return (
     <TextInput
       {...props}
-      style={{borderRadius: 100, color: darkGreen, paddingHorizontal: 15, width: '70%', height: 45, backgroundColor: 'rgb(220,220, 220)', marginVertical: 10}}
-      placeholderTextColor={darkGreen}></TextInput>
-  );
-};
+      style={{
+        borderRadius: 100,
+        color: darkGreen,
+        paddingHorizontal: 15,
+        width: '70%',
+        height: 45,
+        backgroundColor: 'rgb(220,220, 220)',
+        marginVertical: 10,
+      }}
+      placeholderTextColor={darkGreen}
+    ></TextInput>
+  )
+}
 
-export default Field;
+export default Field

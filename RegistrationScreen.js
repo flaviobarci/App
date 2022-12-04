@@ -1,11 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View, Image, Button, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import { StatusBar } from 'expo-status-bar'
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Image,
+  Button,
+  TouchableOpacity,
+} from 'react-native'
+import React, { useState } from 'react'
 
 export default function RegistrationScreen() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   return (
     <View style={styles.container}>
       <Image source={require('./assets/logo.png')} />
@@ -30,7 +38,7 @@ export default function RegistrationScreen() {
           onChangeText={(email) => setEmail(email)}
         />
       </View>
-      
+
       <Text>Password</Text>
       <View style={styles.inputView}>
         <TextInput
@@ -54,7 +62,7 @@ export default function RegistrationScreen() {
 
       <StatusBar style="auto" />
     </View>
-  );
+  )
 }
 
 // Styling the components
@@ -79,7 +87,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: 'center',
   },
-  
+
   TextInput: {
     height: 50,
     flex: 1,
@@ -91,26 +99,25 @@ const styles = StyleSheet.create({
     width: '30%',
     height: 50,
     alignItems: 'center',
-    justifyContent:'center',
+    justifyContent: 'center',
     marginTop: 40,
-    backgroundColor:'#fff',
+    backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#000',
- },
+  },
 
   registerBtn: {
     width: '30%',
     height: 50,
     alignItems: 'center',
-    justifyContent:'center',
+    justifyContent: 'center',
     marginTop: 40,
-    backgroundColor:'#fff',
+    backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#000',
   },
 
   buttonsView: {
     flexDirection: 'row',
-
-  }
-});
+  },
+})

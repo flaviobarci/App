@@ -13,11 +13,12 @@
     "deploy": "gh-pages -d web-build",
     "predeploy": "expo export:web",
     "np": "np --no-publish",
-    "postversion": "react-native-version"
+    "postversion": "react-native-version",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
-  "nyc": { 
-    "all": true, 
-    "include": "*.js" 
+  "nyc": {
+    "all": true,
+    "include": "*.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "@expo/webpack-config": "^0.17.2",
     "@react-navigation/native": "^6.0.16",
     "@react-navigation/native-stack": "^6.9.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "cypress": "^11.2.0",
     "expo": "~47.0.3",
     "expo-status-bar": "~1.4.2",
@@ -36,6 +38,8 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
+    "react-native-safe-area-context": "^4.4.1",
+    "react-native-screens": "^3.18.2",
     "react-native-web": "~0.18.9"
   },
   "devDependencies": {
@@ -43,9 +47,19 @@
     "@cypress/code-coverage": "^3.10.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.1.1",
-    "eslint": "^8.28.0",
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-config-standard-jsx": "^11.0.0",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-native": "^4.0.0",
+    "eslint-plugin-standard": "^5.0.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "np": "^7.6.2",
