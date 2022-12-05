@@ -21,11 +21,7 @@ const Register = (props) => {
       />
       <View style={styles.form}>
         <Text style={styles.callout}>Already have an account ? </Text>
-        <TouchableOpacity
-          onPress={() => {
-            alert('Account already created')
-          }}
-        >
+        <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
           <Text style={styles.login}>Login</Text>
         </TouchableOpacity>
       </View>
