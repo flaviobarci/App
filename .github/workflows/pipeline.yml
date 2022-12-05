@@ -42,9 +42,9 @@ jobs:
         working-directory: ./coverage
         continue-on-error: true
         run: |
-          sed -i 's/\/home\/runner\/work\/App\/App\//\/github\/workspace\//g' lcov.info
+          ls -lah
           sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' lcov.info
-          sed -i 's/\/home\/runner\/work\/App\/App\//\/github\/workspace\//g' clover.xml
+          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' clover.xml
 
       - name: 🔍 SonarCloud Scan
         continue-on-error: true
