@@ -32,17 +32,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🧪 Run Cypress Test
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5.0.0
         with:
           browser: chrome
           env: BASE_URL=${{ secrets.BASE_URL }}
           quiet: false
+          headed: true
 
       - name: 🔧 Fix code coverage paths
         working-directory: ./coverage
         continue-on-error: true
         run: |
-          ls -lah
           sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' lcov.info
           sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' clover.xml
 
