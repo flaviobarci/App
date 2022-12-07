@@ -1,16 +1,19 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Btn from './Btn'
 import Field from './Field'
-import { darkGreen } from './Constants'
+import { darkGreen, red } from './Constants'
+import reactDom from 'react-dom'
 
 const Register = (props) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
 
-  function register_api() {
-    fetch('http://127.0.0.1:8000/api/register', {
+  const register_api = async () => {
+
+    await fetch('http://127.0.0.1:8000/api/register', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -21,24 +24,30 @@ const Register = (props) => {
         email: email,
         password: password
       })
-    });
+    }).then(
+      function (response) {
+        if (response.status == 201) {
+          setErrorMsg('')
+          props.navigation.navigate('Login')
+          return
+        }
+        if (response.status==403){
+          setErrorMsg('Username/Email already taken, or invalid inputs')
+          return
+        }
+      }
+    )
   }
-
 
   return (
     <View style={styles.view}>
       <Text style={styles.title}>Register</Text>
-
+      <Text style={styles.error}>{errorMsg}</Text>
       <Field placeholder="Name" onChangeText={(username) => setUsername(username)} />
       <Field placeholder="Email / Username" keyboardType={'email-address'} onChangeText={(email) => setEmail(email)} />
       <Field placeholder="Password" secureTextEntry={true} onChangeText={(password) => setPassword(password)} />
 
-      <Btn
-        btnLabel="Let's go!"
-        Press={() => {
-          register_api()
-        }}
-      />
+      <Btn btnLabel="Let's go!" Press={() => register_api()}/>
       <View style={styles.form}>
         <Text style={styles.callout}>Already have an account ? </Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
@@ -71,6 +80,7 @@ const styles = StyleSheet.create({
   },
   callout: { fontSize: 16, fontWeight: 'bold' },
   login: { color: darkGreen, fontWeight: 'bold', fontSize: 16 },
+  error: { color: red, fontSize:16 }
 })
 
 export default Register
