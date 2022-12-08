@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Register from './src/Register'
-import Main from './src/Main'
-import Login from './src/Login'
+import Register from './Register'
+import Main from './Main'
+import Login from './Login'
+import { registerRootComponent } from 'expo'
 
 const Stack = createNativeStackNavigator()
 
@@ -19,4 +20,4 @@ function App() {
   )
 }
 
-export default App
+export default registerRootComponent(App)
