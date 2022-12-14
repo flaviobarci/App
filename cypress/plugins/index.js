@@ -1,14 +1,9 @@
-/**
- * @type {Cypress.PluginConfig}
- */
- module.exports = (on, config) => {
-    // https://docs.cypress.io/api/plugins/after-run-api
-    on('after:run', (results) => {
-		// /!\ don't forget to return the Promise /!\
-        return require('cypress-sonarqube-reporter/mergeReports')(results);
-    });
+module.exports = (on, config) => {
+  require('@cypress/code-coverage/task')(on, config)
 
-    require('@cypress/code-coverage/task')(on, config);
+  // add other tasks to be registered here
 
-    return config;
-};
+  // IMPORTANT to return the config object
+  // with the any changed environment variables
+  return config
+}

@@ -1,26 +1,26 @@
 name: Release
 on:
-  push :
-    branches : main
-    
+  push:
+    branches: dev
+
 jobs:
   Release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@v7
         with:
           expo-version: latest
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      
+
       - name: Download APK
-        run: | 
+        run: |
           APK=$(eas build:list --limit 1 --non-interactive | grep -o 'https://[^ "<]*.apk')
           echo ${APK}
-          curl ${APK} --output app.apk          
+          curl ${APK} --output app.apk
 
       - name: 🔔 Create release
         id: create_release
@@ -36,7 +36,7 @@ jobs:
             - Second Change
           draft: true
           prerelease: false
-      
+
       - name: 🚀 Upload release asset
         uses: actions/upload-release-asset@v1
         env:
@@ -46,7 +46,7 @@ jobs:
           asset_path: ./app.apk
           asset_name: app.apk
           asset_content_type: application/vnd.android.package-archive
-      
+
       - name: 🏁 Publish release
         uses: StuYarrow/publish-release@v1.1.2
         env:
