@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Btn from './Btn'
 import Field from './Field'
 import { darkGreen, red } from './Constants'
-import reactDom from 'react-dom'
 
 const Register = (props) => {
   const [username, setUsername] = useState('');
