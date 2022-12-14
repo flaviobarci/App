@@ -1,13 +1,10 @@
-name: Pipeline
+name: Web
 on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened]
-
 jobs:
-  pipeline:
+  web:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,15 +24,9 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 🧪 Run Cypress Test
-        uses: cypress-io/github-action@v5.0.0
-        with:
-          start: npm run web
-          browser: chrome
-
-      - name: 🔍 SonarCloud Scan
-        continue-on-error: true
-        uses: SonarSource/sonarcloud-github-action@master
+      - name: 🚀 Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
