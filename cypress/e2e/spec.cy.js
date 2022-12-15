@@ -7,8 +7,8 @@ describe('My First Test', () => {
 
     cy.contains("Register").click()
 
-    cy.get('[placeholder="Name"]').type("Username")
-    cy.get('[placeholder="Email / Username"]').type("email@email.com")
+    cy.get('[placeholder="Username"]').type("Username")
+    cy.get('[placeholder="Email"]').type("email@email.com")
     cy.get('[placeholder="Password"]').type("Passwords")
 
     cy.contains("Let's go!").click()
