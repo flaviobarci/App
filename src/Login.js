@@ -5,26 +5,28 @@ import { darkGreen, gray } from './Constants'
 import Field from './Field'
 
 const Login = (props) => {
-  const [ email, setEmail] = useState("");
-  const [ password, setPassword] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  const handleLogin = event => {
-    event.preventDefault();
-    const uploadData = new FormData();
+  const handleLogin = (event) => {
+    event.preventDefault()
+    const uploadData = new FormData()
 
-    const strongRegex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+    const strongRegex = new RegExp(
+      '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'
+    )
 
     if (!strongRegex.test(email) || !email) {
-      alert("Invalid email.")
+      alert('Invalid email.')
     } else if (password.length < 8) {
-      alert("Password is too short.");
+      alert('Password is too short.')
     } else {
-      uploadData.append('email', email);
-      uploadData.append('password', password);
-      console.log(uploadData);
-      alert("Account created!")
+      uploadData.append('email', email)
+      uploadData.append('password', password)
+      console.log(uploadData)
+      alert('Account created!')
     }
-  };
+  }
 
   return (
     <View style={styles.view}>
@@ -33,11 +35,11 @@ const Login = (props) => {
       <Field
         placeholder="Email"
         keyboardType={'email-address'}
-        onChangeText={text => setEmail(text)}
+        onChangeText={(text) => setEmail(text)}
       />
       <Field
         placeholder="Password"
-        onChangeText={text => setPassword(text)}
+        onChangeText={(text) => setPassword(text)}
         secureTextEntry={true}
       />
       <Btn

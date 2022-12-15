@@ -1,3 +1,4 @@
+name: Preview
 on:
   pull_request:
     types: [opened, synchronize]
@@ -25,7 +26,7 @@ jobs:
         run: npm install
 
       - name: 🚀 Publish to Expo
-        run: expo publish --release-channel=pr-${{ github.event.number }} --non-interactive
+        run: API_URL=${{ secrets.API_URL }} expo publish --release-channel=pr-${{ github.event.number }} --non-interactive
 
       - name: 💬 Comment in preview
         uses: expo/expo-github-action/preview-comment@v7
