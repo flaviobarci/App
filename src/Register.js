@@ -5,9 +5,10 @@ import Field from './Field'
 import { darkGreen } from './Constants'
 
 const Register = (props) => {
-  const [username, setUsername] = useState("");
+  const [ username, setUsername] = useState("");
   const [ email, setEmail] = useState("");
   const [ password, setPassword] = useState("");
+  
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -16,9 +17,10 @@ const Register = (props) => {
     const strongRegex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
 
     if (!username || username.length < 4 || username.length > 70) {
+      console.log(username)
       alert("Invalid username.");
     } else if (!strongRegex.test(email) || !email) {
-      alert("You did not enter a valid email.")
+      alert("You did not enter a valid email.");
     } else if (password.length < 8) {
       alert("Password is too short.");
     } else {
@@ -26,7 +28,7 @@ const Register = (props) => {
       uploadData.append('email', email);
       uploadData.append('password', password);
       console.log(uploadData);
-      alert("Account created!")
+      alert("Account created!");
     }
   };
 
@@ -36,16 +38,16 @@ const Register = (props) => {
 
       <Field 
         placeholder="Username"
-        onChange={event => setUsername(event.target.value)}
+        onChangeText={text => setUsername(text)}
       />
       <Field
         placeholder="Email"
         keyboardType={'email-address'}
-        onChange={event => setEmail(event.target.value)}
+        onChangeText={text => setEmail(text)}
       />
       <Field
         placeholder="Password"
-        onChange={event => setPassword(event.target.value)}
+        onChangeText={text => setPassword(text)}
         secureTextEntry={true}
       />
 
