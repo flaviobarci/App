@@ -13,7 +13,7 @@ const Register = (props) => {
   const [errorMsg, setErrorMsg] = useState('')
 
   const registerUser = async () => {
-    await fetch(`${Constants.manifest?.extra?.API_URL}`, {
+    await fetch(`${Constants.manifest?.extra?.API_URL}/register`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
