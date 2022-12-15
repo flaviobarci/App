@@ -1,11 +1,5 @@
 describe('My First Test', () => {
-  it('Visits our Application', () => {
-    cy.visit(Cypress.env('BASE_URL'))
-    cy.contains('Register').should('be.visible') // Assert that element is visible
-  })
-
-
-  it('Show register with wrong username', () => {
+  it('Show register', () => {
     cy.visit(Cypress.env('BASE_URL'))
     cy.contains('UnReveal').should('be.visible')
     cy.contains('Login').should('be.visible')
@@ -13,7 +7,27 @@ describe('My First Test', () => {
 
     cy.contains("Register").click()
 
+    cy.get('[placeholder="Name"]').type("Username")
+    cy.get('[placeholder="Email / Username"]').type("email@email.com")
+    cy.get('[placeholder="Password"]').type("Passwords")
+
+    cy.contains("Let's go!").click()
+
+    cy.on('windows:alert', (str) => {
+      expect(str).to.equal("Account already created")
+    })
     
+  })
+
+  it('Show register with wrong username', () => {
+
+    cy.visit(Cypress.env('BASE_URL'))
+    cy.contains('UnReveal').should('be.visible')
+    cy.contains('Login').should('be.visible')
+    cy.contains('Register').should('be.visible') 
+
+    cy.contains("Register").click()
+
     cy.get('[placeholder="Username"]').type("Use")
     cy.get('[placeholder="Email"]').type("email@email.com")
     cy.get('[placeholder="Password"]').type("Passwords")
@@ -29,16 +43,14 @@ describe('My First Test', () => {
 
 
 
-
-
   it('Show register with wrong email', () => {
+  
     cy.visit(Cypress.env('BASE_URL'))
     cy.contains('UnReveal').should('be.visible')
     cy.contains('Login').should('be.visible')
     cy.contains('Register').should('be.visible') 
 
     cy.contains("Register").click()
-
     
     cy.get('[placeholder="Username"]').type("Username")
     cy.get('[placeholder="Email"]').type("emailemailcom")
@@ -55,21 +67,18 @@ describe('My First Test', () => {
 
 
 
-
-
   it('Show register with wrong password', () => {
+  
     cy.visit(Cypress.env('BASE_URL'))
     cy.contains('UnReveal').should('be.visible')
     cy.contains('Login').should('be.visible')
     cy.contains('Register').should('be.visible') 
 
     cy.contains("Register").click()
-
     
     cy.get('[placeholder="Username"]').type("Username")
     cy.get('[placeholder="Email"]').type("email@email.com")
     cy.get('[placeholder="Password"]').type("1234")
-
 
     cy.get('.r-borderTopLeftRadius-sv81z0 > .r-alignItems-1awozwy').click()
 
@@ -77,11 +86,6 @@ describe('My First Test', () => {
       expect(str).to.equal("Password is too short.")
     })
 
-  })
-
-
-
-
-  
+  }) 
 
 })
