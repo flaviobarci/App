@@ -5,6 +5,7 @@ import Field from './Field'
 import { darkGreen, red } from './Constants'
 
 const Register = (props) => {
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,9 +20,9 @@ const Register = (props) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        username: username,
-        email: email,
-        password: password
+        username,
+        email,
+        password
       })
     }).then(
       function (response) {
@@ -32,21 +33,60 @@ const Register = (props) => {
         }
         if (response.status==403){
           setErrorMsg('Username/Email already taken, or invalid inputs')
-          return
+          
         }
       }
     )
   }
 
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    const uploadData = new FormData();
+
+    const strongRegex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+
+    if (!username || username.length < 4 || username.length > 70) {
+      console.log(username)
+      alert("Invalid username.");
+    } else if (!strongRegex.test(email) || !email) {
+      alert("You did not enter a valid email.");
+    } else if (password.length < 8) {
+      alert("Password is too short.");
+    } else {
+      uploadData.append('username', username);
+      uploadData.append('email', email);
+      uploadData.append('password', password);
+      console.log(uploadData);
+      alert("Account created!");
+    }
+  };
+
   return (
     <View style={styles.view}>
       <Text style={styles.title}>Register</Text>
       <Text style={styles.error}>{errorMsg}</Text>
-      <Field placeholder="Name" onChangeText={(username) => setUsername(username)} />
-      <Field placeholder="Email / Username" keyboardType={'email-address'} onChangeText={(email) => setEmail(email)} />
-      <Field placeholder="Password" secureTextEntry={true} onChangeText={(password) => setPassword(password)} />
+      
+      <Field 
+        placeholder="Username"
+        onChangeText={text => setUsername(text)}
+      />
+      <Field
+        placeholder="Email"
+        keyboardType={'email-address'}
+        onChangeText={text => setEmail(text)}
+      />
+      <Field
+        placeholder="Password"
+        onChangeText={text => setPassword(text)}
+        secureTextEntry={true}
+      />
 
-      <Btn btnLabel="Let's go!" Press={() => register_api()}/>
+      <Btn
+        btnLabel="Let's go!"
+        Press={register_api}
+      />
+
       <View style={styles.form}>
         <Text style={styles.callout}>Already have an account ? </Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
