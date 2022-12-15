@@ -1,66 +1,56 @@
-describe('My First Test', () => {
-  it('Show register', () => {
+describe('Register Tests', () => {
+  it('should register', () => {
     cy.visit(Cypress.env('BASE_URL'))
+
     cy.contains('UnReveal').should('be.visible')
     cy.contains('Login').should('be.visible')
     cy.contains('Register').should('be.visible')
 
     cy.contains('Register').click()
 
-    cy.get('[placeholder="Username"]').type('Username')
+    cy.get('[placeholder="Username"]').type('username')
     cy.get('[placeholder="Email"]').type('email@email.com')
-    cy.get('[placeholder="Password"]').type('Passwords')
+    cy.get('[placeholder="Password"]').type('password')
+
+    cy.intercept(`/api/register*`, {
+      statusCode: 201,
+    })
 
     cy.contains("Let's go!").click()
 
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Account already created')
-    })
+    cy.contains('Login to your account').should('be.visible')
   })
 
-  it('Show register with wrong username', () => {
+  it('should not register with wrong username', () => {
     cy.visit(Cypress.env('BASE_URL'))
-    cy.contains('UnReveal').should('be.visible')
-    cy.contains('Login').should('be.visible')
-    cy.contains('Register').should('be.visible')
 
     cy.contains('Register').click()
 
-    cy.get('[placeholder="Username"]').type('Use')
+    cy.get('[placeholder="Username"]').type('use')
     cy.get('[placeholder="Email"]').type('email@email.com')
-    cy.get('[placeholder="Password"]').type('Passwords')
+    cy.get('[placeholder="Password"]').type('password')
 
-    cy.get('.r-borderTopLeftRadius-sv81z0 > .r-alignItems-1awozwy').click()
+    cy.contains("Let's go!").click()
 
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Invalid username.')
-    })
+    cy.contains('Invalid username.').should('be.visible')
   })
 
-  it('Show register with wrong email', () => {
+  it('should not register with wrong email', () => {
     cy.visit(Cypress.env('BASE_URL'))
-    cy.contains('UnReveal').should('be.visible')
-    cy.contains('Login').should('be.visible')
-    cy.contains('Register').should('be.visible')
 
     cy.contains('Register').click()
 
-    cy.get('[placeholder="Username"]').type('Username')
+    cy.get('[placeholder="Username"]').type('username')
     cy.get('[placeholder="Email"]').type('emailemailcom')
-    cy.get('[placeholder="Password"]').type('Passwords')
+    cy.get('[placeholder="Password"]').type('password')
 
-    cy.get('.r-borderTopLeftRadius-sv81z0 > .r-alignItems-1awozwy').click()
+    cy.contains("Let's go!").click()
 
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('You did not enter a valid email.')
-    })
+    cy.contains('You did not enter a valid email.').should('be.visible')
   })
 
-  it('Show register with wrong password', () => {
+  it('should not register with wrong password', () => {
     cy.visit(Cypress.env('BASE_URL'))
-    cy.contains('UnReveal').should('be.visible')
-    cy.contains('Login').should('be.visible')
-    cy.contains('Register').should('be.visible')
 
     cy.contains('Register').click()
 
@@ -68,51 +58,66 @@ describe('My First Test', () => {
     cy.get('[placeholder="Email"]').type('email@email.com')
     cy.get('[placeholder="Password"]').type('1234')
 
-    cy.get('.r-borderTopLeftRadius-sv81z0 > .r-alignItems-1awozwy').click()
+    cy.contains("Let's go!").click()
 
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Password is too short.')
-    })
+    cy.contains('Password is too short.').should('be.visible')
   })
 
-  it('Show login', () => {
+  it('should display error alert when failed registration', () => {
     cy.visit(Cypress.env('BASE_URL'))
+
     cy.contains('UnReveal').should('be.visible')
     cy.contains('Login').should('be.visible')
     cy.contains('Register').should('be.visible')
 
+    cy.contains('Register').click()
+
+    cy.get('[placeholder="Username"]').type('username')
+    cy.get('[placeholder="Email"]').type('email@email.com')
+    cy.get('[placeholder="Password"]').type('password')
+
+    cy.intercept(`/api/register*`, {
+      statusCode: 403,
+    })
+
+    cy.contains("Let's go!").click()
+
+    cy.on('windows:alert', (str) => {
+      expect(str).to.equal('Username or Email already taken, or invalid inputs')
+    })
+  })
+})
+
+describe('Login Tests', () => {
+  it('should login', () => {
+    cy.visit(Cypress.env('BASE_URL'))
+
     cy.contains('Login').click()
 
     cy.get('[placeholder="Email"]').type('email@email.com')
-    cy.get('[placeholder="Password"]').type('Passwords')
+    cy.get('[placeholder="Password"]').type('password')
 
-    // following there is the "Login" button test
-    cy.get('.r-borderTopLeftRadius-sv81z0 > .r-alignItems-1awozwy').click()
+    cy.contains("Let's go!").click()
 
     cy.on('windows:alert', (str) => {
       expect(str).to.equal('Account created!')
     })
   })
 
-  it('Show failed login with wrong email', () => {
+  it('should not login with wrong email', () => {
     cy.visit(Cypress.env('BASE_URL'))
-    cy.contains('UnReveal').should('be.visible')
-    cy.contains('Login').should('be.visible')
-    cy.contains('Register').should('be.visible')
 
     cy.contains('Login').click()
 
     cy.get('[placeholder="Email"]').type('emailemailcom')
-    cy.get('[placeholder="Password"]').type('Passwords')
+    cy.get('[placeholder="Password"]').type('password')
 
-    cy.get('.r-borderTopLeftRadius-sv81z0 > .r-alignItems-1awozwy').click()
+    cy.contains("Let's go!").click()
 
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Invalid email.')
-    })
+    cy.contains('Invalid email.').should('be.visible')
   })
 
-  it('Show failed login with wrong password', () => {
+  it('should not login with wrong password', () => {
     cy.visit(Cypress.env('BASE_URL'))
     cy.contains('UnReveal').should('be.visible')
     cy.contains('Login').should('be.visible')
@@ -123,10 +128,8 @@ describe('My First Test', () => {
     cy.get('[placeholder="Email"]').type('email@email.com')
     cy.get('[placeholder="Password"]').type('1234')
 
-    cy.get('.r-borderTopLeftRadius-sv81z0 > .r-alignItems-1awozwy').click()
+    cy.contains("Let's go!").click()
 
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Password is too short.')
-    })
+    cy.contains('Password is too short.').should('be.visible')
   })
 })

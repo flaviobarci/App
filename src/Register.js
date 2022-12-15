@@ -3,14 +3,15 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Btn from './Btn'
 import Field from './Field'
 import { darkGreen, red } from './Constants'
-import Constants from 'expo-constants';
-
+import Constants from 'expo-constants'
 
 const Register = (props) => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [errorMsg, setErrorMsg] = useState('')
+  const [userErrorMsg, setUserErrorMsg] = useState('')
+  const [emailErrorMsg, setEmailErrorMsg] = useState('')
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
 
   const registerUser = async () => {
     await fetch(`${Constants.manifest?.extra?.API_URL}/register`, {
@@ -26,57 +27,64 @@ const Register = (props) => {
       }),
     }).then(function (response) {
       if (response.status === 201) {
-        setErrorMsg('')
         props.navigation.navigate('Login')
         return
       }
       if (response.status === 403) {
-        setErrorMsg('Username/Email already taken, or invalid inputs')
+        alert('Username or Email already taken, or invalid inputs')
       }
     })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const uploadData = new FormData()
 
     const strongRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/
 
+    setUserErrorMsg('')
+    setEmailErrorMsg('')
+    setPasswordErrorMsg('')
+
     if (!username || username.length < 4 || username.length > 70) {
-      alert('Invalid username.')
+      setUserErrorMsg('Invalid username.')
     } else if (!strongRegex.test(email) || !email) {
-      alert('You did not enter a valid email.')
+      setEmailErrorMsg('You did not enter a valid email.')
     } else if (password.length < 8) {
-      alert('Password is too short.')
+      setPasswordErrorMsg('Password is too short.')
     } else {
-      uploadData.append('username', username)
-      uploadData.append('email', email)
-      uploadData.append('password', password)
-      console.log(uploadData)
       await registerUser()
     }
+  }
+
+  const handleUsername = async (text) => {
+    setUsername(text)
+  }
+  const handleEmail = async (text) => {
+    setEmail(text)
+  }
+
+  const handlePassword = async (text) => {
+    setPassword(text)
   }
 
   return (
     <View style={styles.view}>
       <Text style={styles.title}>Register</Text>
-      <Text style={styles.error}>{errorMsg}</Text>
 
-      <Field
-        placeholder="Username"
-        onChangeText={(text) => setUsername(text)}
-      />
+      <Field placeholder="Username" onChangeText={handleUsername} />
+      <Text style={styles.error}>{userErrorMsg}</Text>
       <Field
         placeholder="Email"
         keyboardType={'email-address'}
-        onChangeText={(text) => setEmail(text)}
+        onChangeText={handleEmail}
       />
+      <Text style={styles.error}>{emailErrorMsg}</Text>
       <Field
         placeholder="Password"
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={handlePassword}
         secureTextEntry={true}
       />
-
+      <Text style={styles.error}>{passwordErrorMsg}</Text>
       <Btn btnLabel="Let's go!" Press={handleSubmit} />
 
       <View style={styles.form}>
@@ -91,11 +99,7 @@ const Register = (props) => {
 
 const styles = StyleSheet.create({
   view: {
-    height: 700,
-    width: 460,
-    borderTopLeftRadius: 150,
-    paddingTop: 200,
-    paddingRight: 70,
+    marginVertical: 100,
     alignItems: 'center',
   },
   title: {
