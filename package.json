@@ -26,6 +26,7 @@
     "@react-navigation/native": "^6.0.16",
     "@react-navigation/native-stack": "^6.9.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "dotenv": "^16.0.3",
     "expo": "~47.0.3",
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.15.6",
