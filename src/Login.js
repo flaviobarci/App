@@ -14,9 +14,7 @@ const Login = (props) => {
 
     const strongRegex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
 
-    if (email.length < 4 || email.length > 70) {
-      alert("Invalid email or username.");
-    } else if (!strongRegex.test(email) || !email) {
+    if (!strongRegex.test(email) || !email) {
       alert("Invalid email.")
     } else if (password.length < 8) {
       alert("Password is too short.");
@@ -33,13 +31,13 @@ const Login = (props) => {
       <Text style={styles.title}>Login</Text>
       <Text style={styles.subtitle}>Login to your account</Text>
       <Field
-        placeholder="Email / Username"
+        placeholder="Email"
         keyboardType={'email-address'}
-        onChange={event => setEmail(event.target.value)}
+        onChangeText={text => setEmail(text)}
       />
       <Field
         placeholder="Password"
-        onChange={event => setPassword(event.target.value)}
+        onChangeText={text => setPassword(text)}
         secureTextEntry={true}
       />
       <Btn
