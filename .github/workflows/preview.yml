@@ -4,7 +4,7 @@ on:
     types: [opened, synchronize]
 jobs:
   preview:
-    if: "!contains(github.event.pull_request.labels.*.name, '0 diff dependencies')"
+    if: ${{ !contains(github.event.pull_request.labels.*.name, '0 diff dependencies') }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
