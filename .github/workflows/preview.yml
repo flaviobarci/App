@@ -4,6 +4,7 @@ on:
     types: [opened, synchronize]
 jobs:
   preview:
+    if: ${{ github.event.label.name != 'dependencies' }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
