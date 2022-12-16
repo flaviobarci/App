@@ -8,6 +8,7 @@ on:
 
 jobs:
   pipeline:
+    if: ${{ github.event.label.name != 'dependencies' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,6 +31,7 @@ jobs:
       - name: 🧪 Run Cypress Test
         uses: cypress-io/github-action@v5.0.0
         with:
+          env: API_URL=${{ secrets.API_URL }}
           start: npm run web
           browser: chrome
 
