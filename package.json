@@ -69,7 +69,6 @@
     "webpack.config.js": "0.0.0"
   },
   "prettier": {
-    "jsxBracketSameLine": true,
     "semi": false,
     "singleQuote": true
   },
