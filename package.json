@@ -8,13 +8,13 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "prettier": "prettier App.js",
+    "prettier": "prettier --check .",
     "precommit": "lint-staged",
     "deploy": "gh-pages -d web-build",
     "predeploy": "expo export:web",
     "np": "np --no-publish",
     "postversion": "react-native-version",
-    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+    "eslint-check": "eslint ."
   },
   "repository": {
     "type": "git",
