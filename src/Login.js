@@ -5,16 +5,11 @@ import { darkGreen, gray, red } from './Constants'
 import Constants from 'expo-constants'
 import Field from './Field'
 
-
-
 const Login = (props) => {
-
-  const [ email, setEmail] = useState("");
-  const [ password, setPassword] = useState("");
-  const [ emailerrorMsg, setemailerrorMsg ] = useState("");
-  const [ passwordErrorMsg, setPassworderrorMsg ] = useState("");
-
-
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [emailerrorMsg, setemailerrorMsg] = useState('')
+  const [passwordErrorMsg, setPassworderrorMsg] = useState('')
 
   const loginUser = async () => {
     await fetch(`${Constants.manifest?.extra?.API_URL}/login`, {
@@ -38,15 +33,9 @@ const Login = (props) => {
     })
   }
 
-
-
-
-
-
-
   const handleLogin = async (event) => {
-    event.preventDefault();
-    
+    event.preventDefault()
+
     const strongRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/
 
     setemailerrorMsg('')
@@ -58,7 +47,6 @@ const Login = (props) => {
       setPassworderrorMsg('Password is too short.')
     } else {
       await loginUser()
-
     }
   }
 
@@ -75,16 +63,12 @@ const Login = (props) => {
       <Text style={styles.title}>Login</Text>
       <Text style={styles.subtitle}>Login to your account</Text>
 
-      
-      
-      
-      <Text style = {styles.error}>{emailerrorMsg}</Text>
+      <Text style={styles.error}>{emailerrorMsg}</Text>
       <Field
         placeholder="Email"
         keyboardType={'email-address'}
         onChangeText={handleEmail}
       />
-
 
       <Text style={styles.error}>{emailerrorMsg}</Text>
       <Field
@@ -99,7 +83,6 @@ const Login = (props) => {
         btnLabel="Let's go!"
         Press={handleLogin}
       />
-
 
       <View style={styles.form}>
         <Text style={styles.callout}>Do not have an account ? </Text>
