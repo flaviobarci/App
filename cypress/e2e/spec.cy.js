@@ -132,4 +132,30 @@ describe('Login Tests', () => {
 
     cy.contains('Password is too short.').should('be.visible')
   })
+
+
+
+
+  it('should display error alert when failed login', () => {
+    cy.visit(Cypress.env('BASE_URL'))
+
+    cy.contains('UnReveal').should('be.visible')
+    cy.contains('Login').should('be.visible')
+    cy.contains('Register').should('be.visible')
+
+    cy.contains('Login').click()
+
+    cy.get('[placeholder="Email"]').type('email@email.com')
+    cy.get('[placeholder="Password"]').type('password')
+
+    cy.intercept(`*login`, {
+      statusCode: 403,
+    })
+
+    cy.contains("Let's go!").click()
+
+    cy.on('windows:alert', (str) => {
+      expect(str).to.equal('Invalid inputs')
+    })
+  })
 })
