@@ -30,7 +30,8 @@ jobs:
       - name: 🧪 Run Cypress Test
         uses: cypress-io/github-action@v5.0.0
         with:
-          start: API_URL=${{ secrets.API_URL }} npm run web
+          env: API_URL=${{ secrets.API_URL }}
+          start: npm run web
           browser: chrome
 
       - name: 🔍 SonarCloud Scan
