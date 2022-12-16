@@ -76,7 +76,7 @@ describe('Register Tests', () => {
     cy.get('[placeholder="Email"]').type('email@email.com')
     cy.get('[placeholder="Password"]').type('password')
 
-    cy.intercept(`/api/register*`, {
+    cy.intercept(`*register`, {
       statusCode: 403,
     })
 
