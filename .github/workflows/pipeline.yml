@@ -8,6 +8,7 @@ on:
 
 jobs:
   pipeline:
+    if: ${{ github.event.label.name != 'dependencies' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
