@@ -146,17 +146,17 @@ describe('Login Tests', () => {
     cy.get('[placeholder="Password"]').type('password')
 
     cy.intercept(`*login`, {
-      statusCode: 403,
+      statusCode: 401,
     })
 
     cy.contains("Let's go!").click()
 
     cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Invalid inputs')
+      expect(str).to.equal('Email already taken or invalid inputs')
     })
   })
 
-  it('Login enters main page', () => {
+  it('should display error alert when failed login_404', () => {
     cy.visit(Cypress.env('BASE_URL'))
 
     cy.contains('UnReveal').should('be.visible')
@@ -168,10 +168,12 @@ describe('Login Tests', () => {
     cy.get('[placeholder="Email"]').type('email@email.com')
     cy.get('[placeholder="Password"]').type('password')
 
-    cy.intercept(`*login`, {
-      statusCode: 201,
-    })
-
     cy.contains("Let's go!").click()
+
+    cy.request({
+      method: 'POST',
+      url: 'BASE_URL',
+      failOnStatusCode: false,
+    })
   })
 })
