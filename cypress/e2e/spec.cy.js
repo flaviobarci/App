@@ -80,11 +80,15 @@ describe('Register Tests', () => {
       statusCode: 403,
     })
 
-    cy.contains("Let's go!").click()
-
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Username or Email already taken, or invalid inputs')
-    })
+    const stub = cy.stub()
+    cy.on('window:alert', stub)
+    cy.contains("Let's go!")
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith(
+          'Username or Email already taken, or invalid inputs'
+        )
+      })
   })
 })
 
@@ -99,9 +103,13 @@ describe('Login Tests', () => {
 
     cy.contains("Let's go!").click()
 
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Account created!')
-    })
+    const stub = cy.stub()
+    cy.on('window:alert', stub)
+    cy.contains("Let's go!")
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith('Account created!')
+      })
   })
 
   it('should not login with wrong email', () => {
@@ -151,9 +159,15 @@ describe('Login Tests', () => {
 
     cy.contains("Let's go!").click()
 
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Email already taken or invalid inputs')
-    })
+    const stub = cy.stub()
+    cy.on('window:alert', stub)
+    cy.contains("Let's go!")
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith(
+          'Email already taken or invalid inputs'
+        )
+      })
   })
 
   it('should display error alert when failed login_404', () => {

@@ -25,15 +25,20 @@ const Register = (props) => {
         email,
         password,
       }),
-    }).then(function (response) {
-      if (response.status === 201) {
-        props.navigation.navigate('Login')
-        return
-      }
-      if (response.status === 403) {
-        alert('Username or Email already taken, or invalid inputs')
-      }
     })
+      .then(function (response) {
+        if (response.status === 201) {
+          props.navigation.navigate('Login')
+          return
+        }
+        if (response.status === 403) {
+          alert('Username or Email already taken, or invalid inputs')
+        }
+      })
+      .catch(function (err) {
+        console.log(err)
+        alert('It was not possible to connect to the API. Try again later.')
+      })
   }
 
   const handleSubmit = async (event) => {

@@ -22,19 +22,24 @@ const Login = (props) => {
         email,
         password,
       }),
-    }).then(function (response) {
-      if (response.status === 201) {
-        props.navigation.navigate('Main')
-        return
-      }
-
-      if (response.status === 401) {
-        alert('Email and password did not match')
-      }
-      if (response.status === 404) {
-        alert('User not found. Do you mean to register?')
-      }
     })
+      .then(function (response) {
+        if (response.status === 201) {
+          props.navigation.navigate('Main')
+          return
+        }
+
+        if (response.status === 401) {
+          alert('Email and password did not match')
+        }
+        if (response.status === 404) {
+          alert('User not found. Do you mean to register?')
+        }
+      })
+      .catch(function (err) {
+        console.log(err)
+        alert('It was not possible to connect to the API. Try again later.')
+      })
   }
 
   const handleLogin = async (event) => {
