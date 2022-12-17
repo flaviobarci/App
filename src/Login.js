@@ -8,8 +8,8 @@ import Field from './Field'
 const Login = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [emailerrorMsg, setemailerrorMsg] = useState('')
-  const [passwordErrorMsg, setPassworderrorMsg] = useState('')
+  const [emailErrorMsg, setEmailErrorMsg] = useState('')
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
 
   const loginUser = async () => {
     await fetch(`${Constants.manifest?.extra?.API_URL}/login`, {
@@ -24,12 +24,18 @@ const Login = (props) => {
       }),
     }).then(function (response) {
       if (response.status === 201) {
-        props.navigation.navigate('Login')
+        props.navigation.navigate('Main')
         return
       }
-      if (response.status === 403) {
-        alert('Email already taken, or invalid inputs')
+
+      if (response.status === 401) {
+        alert('Email and password did not match')
       }
+      if (response.status === 404) {
+        alert('User not found. Do you mean to register?')
+      }
+
+
     })
   }
 
@@ -38,13 +44,13 @@ const Login = (props) => {
 
     const strongRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/
 
-    setemailerrorMsg('')
-    setPassworderrorMsg('')
+    setEmailErrorMsg('')
+    setPasswordErrorMsg('')
 
     if (!strongRegex.test(email) || !email) {
-      setemailerrorMsg('Invalid email.')
+      setEmailErrorMsg('Invalid email.')
     } else if (password.length < 8) {
-      setPassworderrorMsg('Password is too short.')
+      setPasswordErrorMsg('Password is too short.')
     } else {
       await loginUser()
     }
@@ -63,14 +69,14 @@ const Login = (props) => {
       <Text style={styles.title}>Login</Text>
       <Text style={styles.subtitle}>Login to your account</Text>
 
-      <Text style={styles.error}>{emailerrorMsg}</Text>
+      <Text style={styles.error}>{emailErrorMsg}</Text>
       <Field
         placeholder="Email"
         keyboardType={'email-address'}
         onChangeText={handleEmail}
       />
 
-      <Text style={styles.error}>{emailerrorMsg}</Text>
+      <Text style={styles.error}>{emailErrorMsg}</Text>
       <Field
         placeholder="Password"
         onChangeText={handlePassword}
