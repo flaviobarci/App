@@ -133,9 +133,6 @@ describe('Login Tests', () => {
     cy.contains('Password is too short.').should('be.visible')
   })
 
-
-
-
   it('should display error alert when failed login', () => {
     cy.visit(Cypress.env('BASE_URL'))
 
