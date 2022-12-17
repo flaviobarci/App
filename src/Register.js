@@ -14,7 +14,7 @@ const Register = (props) => {
   const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
 
   const registerUser = async () => {
-    await fetch(`${Constants.manifest?.extra?.API_URL}/register`, {
+    await fetch(`${Constants.manifest?.extra?.API_URL}/user`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

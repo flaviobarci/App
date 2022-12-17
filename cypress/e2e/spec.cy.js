@@ -12,7 +12,7 @@ describe('Register Tests', () => {
     cy.get('[placeholder="Email"]').type('email@email.com')
     cy.get('[placeholder="Password"]').type('password')
 
-    cy.intercept(`*register`, {
+    cy.intercept(`*user`, {
       statusCode: 201,
     })
 
@@ -76,7 +76,7 @@ describe('Register Tests', () => {
     cy.get('[placeholder="Email"]').type('email@email.com')
     cy.get('[placeholder="Password"]').type('password')
 
-    cy.intercept(`*register`, {
+    cy.intercept(`*user`, {
       statusCode: 403,
     })
 
