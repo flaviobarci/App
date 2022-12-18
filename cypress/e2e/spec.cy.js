@@ -196,4 +196,25 @@ describe('Login Tests', () => {
       failOnStatusCode: false,
     })
   })
+
+  it('should login after registration', () => {
+    cy.visit(Cypress.env('BASE_URL'))
+
+    cy.contains('UnReveal').should('be.visible')
+    cy.contains('Login').should('be.visible')
+    cy.contains('Register').should('be.visible')
+
+    cy.contains('Login').click()
+
+    cy.get('[placeholder="Email"]').type('email@email.com')
+    cy.get('[placeholder="Password"]').type('password')
+
+    cy.intercept(`*user`, {
+      statusCode: 201,
+    })
+
+    cy.contains("Let's go!").click()
+
+    cy.contains('Login to your account').should('be.visible')
+  })
 })
