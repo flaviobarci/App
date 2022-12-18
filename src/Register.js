@@ -14,7 +14,7 @@ const Register = (props) => {
   const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
 
   const registerUser = async () => {
-    await fetch(`${Constants.manifest?.extra?.API_URL}/register`, {
+    await fetch(`${Constants.manifest?.extra?.API_URL}/user`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -25,15 +25,20 @@ const Register = (props) => {
         email,
         password,
       }),
-    }).then(function (response) {
-      if (response.status === 201) {
-        props.navigation.navigate('Login')
-        return
-      }
-      if (response.status === 403) {
-        alert('Username or Email already taken, or invalid inputs')
-      }
     })
+      .then(function (response) {
+        if (response.status === 201) {
+          props.navigation.navigate('Login')
+          return
+        }
+        if (response.status === 403) {
+          alert('Username or Email already taken, or invalid inputs')
+        }
+      })
+      .catch(function (err) {
+        console.log(err)
+        alert('It was not possible to connect to the API. Try again later.')
+      })
   }
 
   const handleSubmit = async (event) => {

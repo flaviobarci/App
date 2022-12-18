@@ -12,7 +12,7 @@ describe('Register Tests', () => {
     cy.get('[placeholder="Email"]').type('email@email.com')
     cy.get('[placeholder="Password"]').type('password')
 
-    cy.intercept(`*register`, {
+    cy.intercept(`*user`, {
       statusCode: 201,
     })
 
@@ -76,15 +76,19 @@ describe('Register Tests', () => {
     cy.get('[placeholder="Email"]').type('email@email.com')
     cy.get('[placeholder="Password"]').type('password')
 
-    cy.intercept(`*register`, {
+    cy.intercept(`*user`, {
       statusCode: 403,
     })
 
-    cy.contains("Let's go!").click()
-
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Username or Email already taken, or invalid inputs')
-    })
+    const stub = cy.stub()
+    cy.on('window:alert', stub)
+    cy.contains("Let's go!")
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith(
+          'Username or Email already taken, or invalid inputs'
+        )
+      })
   })
 })
 
@@ -92,16 +96,23 @@ describe('Login Tests', () => {
   it('should login', () => {
     cy.visit(Cypress.env('BASE_URL'))
 
+    cy.contains('UnReveal').should('be.visible')
+    cy.contains('Login').should('be.visible')
+    cy.contains('Register').should('be.visible')
+
+    cy.intercept(`*login`, {
+      statusCode: 201,
+    })
+
     cy.contains('Login').click()
 
     cy.get('[placeholder="Email"]').type('email@email.com')
     cy.get('[placeholder="Password"]').type('password')
 
     cy.contains("Let's go!").click()
-
-    cy.on('windows:alert', (str) => {
-      expect(str).to.equal('Account created!')
-    })
+    cy.contains('UnReveal').should('be.visible')
+    cy.contains('Login').should('be.visible')
+    cy.contains('Register').should('be.visible')
   })
 
   it('should not login with wrong email', () => {
@@ -131,5 +142,63 @@ describe('Login Tests', () => {
     cy.contains("Let's go!").click()
 
     cy.contains('Password is too short.').should('be.visible')
+  })
+
+  it('should display error alert when failed login', () => {
+    cy.visit(Cypress.env('BASE_URL'))
+
+    cy.contains('UnReveal').should('be.visible')
+    cy.contains('Login').should('be.visible')
+    cy.contains('Register').should('be.visible')
+
+    cy.contains('Login').click()
+
+    cy.get('[placeholder="Email"]').type('email@email.com')
+    cy.get('[placeholder="Password"]').type('password')
+
+    cy.intercept(`*login`, {
+      statusCode: 401,
+    })
+
+    cy.contains("Let's go!").click()
+
+    const stub = cy.stub()
+    cy.on('window:alert', stub)
+    cy.contains("Let's go!")
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith(
+          'Email and password did not match'
+        )
+      })
+  })
+
+  it('should display error alert when failed login_404', () => {
+    cy.visit(Cypress.env('BASE_URL'))
+
+    cy.contains('UnReveal').should('be.visible')
+    cy.contains('Login').should('be.visible')
+    cy.contains('Register').should('be.visible')
+
+    cy.contains('Login').click()
+
+    cy.get('[placeholder="Email"]').type('email@email.com')
+    cy.get('[placeholder="Password"]').type('password')
+
+    cy.contains("Let's go!").click()
+
+    cy.intercept(`*user`, {
+      statusCode: 404,
+    })
+
+    const stub = cy.stub()
+    cy.on('window:alert', stub)
+    cy.contains("Let's go!")
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith(
+          'User not found. Do you mean to register?'
+        )
+      })
   })
 })
