@@ -33,6 +33,32 @@ const BottomTabNavigator = () => {
                     )
                 }}
             />
+            <Tab.Screen
+                name="Places"
+                component={Home} // To be changed into Places
+                options={{
+                    tabBarLabel:"My Places",
+                    tabBarIcon:({color, size}) => (
+                        <Image
+                            source={require("../icons/pointer.png")}
+                            style={{ height:20, width:20 }}
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name="Search"
+                component={Home} // To be changed into Search
+                options={{
+                    tabBarLabel:"Find",
+                    tabBarIcon:({color, size}) => (
+                        <Image
+                            source={require("../icons/search.png")}
+                            style={{ height:20, width:20 }}
+                        />
+                    )
+                }}
+            />
         </Tab.Navigator>
     );
 };
