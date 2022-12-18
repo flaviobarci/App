@@ -4,6 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {Image} from 'react-native';
 
 import Home from '../Home.js';
+import HomeScreen from './screens/HomeScreen.js';
+import DetailsScreen from './screens/DetailsScreens.js';
+import SearchScreen from './screens/SearchScreen.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +25,7 @@ const BottomTabNavigator = () => {
         >
             <Tab.Screen
                 name="Home"
-                component={Home}
+                component={HomeScreen}
                 options={{
                     tabBarLabel:"Home",
                     tabBarIcon:({color, size}) => (
@@ -35,7 +38,7 @@ const BottomTabNavigator = () => {
             />
             <Tab.Screen
                 name="Places"
-                component={Home} // To be changed into Places
+                component={DetailsScreen} 
                 options={{
                     tabBarLabel:"My Places",
                     tabBarIcon:({color, size}) => (
@@ -46,11 +49,12 @@ const BottomTabNavigator = () => {
                     )
                 }}
             />
+            
             <Tab.Screen
                 name="Search"
-                component={Home} // To be changed into Search
+                component={SearchScreen} 
                 options={{
-                    tabBarLabel:"Find",
+                    tabBarLabel:"Search",
                     tabBarIcon:({color, size}) => (
                         <Image
                             source={require("../icons/search.png")}
@@ -59,6 +63,8 @@ const BottomTabNavigator = () => {
                     )
                 }}
             />
+
+            
         </Tab.Navigator>
     );
 };
