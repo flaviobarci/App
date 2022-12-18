@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Btn from './Btn'
 import { darkGreen, gray, red } from './Constants'
+import Constants from 'expo-constants'
 import Field from './Field'
 
 const Login = (props) => {
@@ -10,7 +11,38 @@ const Login = (props) => {
   const [emailErrorMsg, setEmailErrorMsg] = useState('')
   const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
 
-  const handleLogin = (event) => {
+  const loginUser = async () => {
+    await fetch(`${Constants.manifest?.extra?.API_URL}/login`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then(function (response) {
+        if (response.status === 201) {
+          props.navigation.navigate('Main')
+          return
+        }
+
+        if (response.status === 401) {
+          alert('Email and password did not match')
+        }
+        if (response.status === 404) {
+          alert('User not found. Do you mean to register?')
+        }
+      })
+      .catch(function (err) {
+        console.log(err)
+        alert('It was not possible to connect to the API. Try again later.')
+      })
+  }
+
+  const handleLogin = async (event) => {
     event.preventDefault()
 
     const strongRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/
@@ -23,7 +55,7 @@ const Login = (props) => {
     } else if (password.length < 8) {
       setPasswordErrorMsg('Password is too short.')
     } else {
-      alert('Account created!')
+      await loginUser()
     }
   }
 
@@ -39,11 +71,14 @@ const Login = (props) => {
     <View style={styles.view}>
       <Text style={styles.title}>Login</Text>
       <Text style={styles.subtitle}>Login to your account</Text>
+
+      <Text style={styles.error}>{emailErrorMsg}</Text>
       <Field
         placeholder="Email"
         keyboardType={'email-address'}
         onChangeText={handleEmail}
       />
+
       <Text style={styles.error}>{emailErrorMsg}</Text>
       <Field
         placeholder="Password"
@@ -57,7 +92,7 @@ const Login = (props) => {
         btnLabel="Let's go!"
         Press={() => props.navigation.navigate("Home")}
       />
-      
+
       <View style={styles.form}>
         <Text style={styles.callout}>Do not have an account ? </Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('Register')}>
