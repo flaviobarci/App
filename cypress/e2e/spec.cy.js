@@ -93,7 +93,7 @@ describe('Register Tests', () => {
 })
 
 describe('Login Tests', () => {
-  it('should login', () => {
+  /*it('should login', () => {
     cy.visit(Cypress.env('BASE_URL'))
 
     cy.contains('UnReveal').should('be.visible')
@@ -107,15 +107,38 @@ describe('Login Tests', () => {
 
     cy.contains("Let's go!").click()
 
+    cy.intercept(`*user`, {
+      statusCode: 201,
+    })
+
     const stub = cy.stub()
     cy.on('window:alert', stub)
     cy.contains("Let's go!")
       .click()
       .then(() => {
         expect(stub.getCall(0)).to.be.calledWith(
-          'User not found. Do you mean to register?'
+          'Account created!'
         )
       })
+  })*/
+
+  it('should login', () => {
+    cy.visit(Cypress.env('BASE_URL'))
+
+    cy.contains('UnReveal').should('be.visible')
+    cy.contains('Login').should('be.visible')
+    cy.contains('Register').should('be.visible')
+
+    cy.intercept(`*login`, {
+      statusCode: 201,
+    })
+
+    cy.contains('Login').click()
+
+    cy.get('[placeholder="Email"]').type('email@email.com')
+    cy.get('[placeholder="Password"]').type('password')
+
+    cy.contains("Let's go!").click()
   })
 
   it('should not login with wrong email', () => {
@@ -195,26 +218,5 @@ describe('Login Tests', () => {
       url: 'BASE_URL',
       failOnStatusCode: false,
     })
-  })
-
-  it('should login after registration', () => {
-    cy.visit(Cypress.env('BASE_URL'))
-
-    cy.contains('UnReveal').should('be.visible')
-    cy.contains('Login').should('be.visible')
-    cy.contains('Register').should('be.visible')
-
-    cy.contains('Login').click()
-
-    cy.get('[placeholder="Email"]').type('email@email.com')
-    cy.get('[placeholder="Password"]').type('password')
-
-    cy.intercept(`*user`, {
-      statusCode: 201,
-    })
-
-    cy.contains("Let's go!").click()
-
-    cy.contains('Login to your account').should('be.visible')
   })
 })
