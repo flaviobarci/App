@@ -5,7 +5,7 @@ import {Image} from 'react-native';
 
 import Home from '../Home.js';
 import HomeScreen from './screens/HomeScreen.js';
-import DetailsScreen from './screens/DetailsScreens.js';
+import MyPlacesScreen from './screens/MyPlacesScreen.js';
 import SearchScreen from './screens/SearchScreen.js';
 
 const Tab = createBottomTabNavigator();
@@ -38,7 +38,7 @@ const BottomTabNavigator = () => {
             />
             <Tab.Screen
                 name="Places"
-                component={DetailsScreen} 
+                component={MyPlacesScreen} 
                 options={{
                     tabBarLabel:"My Places",
                     tabBarIcon:({color, size}) => (
