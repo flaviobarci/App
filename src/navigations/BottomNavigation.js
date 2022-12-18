@@ -23,10 +23,11 @@ const BottomTabNavigator = () => {
                 }
             }}
         >
-            <Tab.Screen
+            <Tab.Screen 
                 name="Home"
                 component={HomeScreen}
                 options={{
+                    headerShown:false,
                     tabBarLabel:"Home",
                     tabBarIcon:({color, size}) => (
                         <Image
@@ -37,9 +38,10 @@ const BottomTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name="Places"
+                name="My Places"
                 component={MyPlacesScreen} 
                 options={{
+                    headerShown:false,
                     tabBarLabel:"My Places",
                     tabBarIcon:({color, size}) => (
                         <Image
@@ -50,10 +52,11 @@ const BottomTabNavigator = () => {
                 }}
             />
             
-            <Tab.Screen
+            <Tab.Screen 
                 name="Search"
                 component={SearchScreen} 
                 options={{
+                    headerShown:false,
                     tabBarLabel:"Search",
                     tabBarIcon:({color, size}) => (
                         <Image
@@ -64,10 +67,12 @@ const BottomTabNavigator = () => {
                 }}
             />
 
-            
+                
         </Tab.Navigator>
     );
 };
+
+
 
 const Stack = createStackNavigator();
 const screenOptionStyle = {
@@ -77,9 +82,10 @@ const screenOptionStyle = {
 const HomeStackNavigator = () => {
     return(
         <Stack.Navigator screenOptions={screenOptionStyle}>
-            <Stack.Screen name="Home" component={BottomTabNavigator}/>
+            <Stack.Screen name = "Home" component={BottomTabNavigator}/>
         </Stack.Navigator>
     )
 };
 
 export default HomeStackNavigator;
+
