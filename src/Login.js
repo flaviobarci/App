@@ -55,8 +55,9 @@ const Login = (props) => {
         textColor="white"
         bgColor={darkGreen}
         btnLabel="Let's go!"
-        Press={handleLogin}
+        Press={() => props.navigation.navigate("Home")}
       />
+      
       <View style={styles.form}>
         <Text style={styles.callout}>Do not have an account ? </Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('Register')}>
