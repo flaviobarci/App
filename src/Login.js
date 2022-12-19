@@ -55,7 +55,7 @@ const Login = (props) => {
     } else if (password.length < 8) {
       setPasswordErrorMsg('Password is too short.')
     } else {
-      await loginUser()
+      await props.navigation.navigate("Home")
     }
   }
 
@@ -90,7 +90,7 @@ const Login = (props) => {
         textColor="white"
         bgColor={COLORS.darkGreen}
         btnLabel="Let's go!"
-        Press={() => props.navigation.navigate("Home")}
+        Press={handleLogin}
       />
 
       <View style={styles.form}>
