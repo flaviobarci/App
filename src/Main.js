@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import Btn from './Btn'
-import { darkGreen } from './Constants'
+import COLORS from './Constants'
 
 const Main = (props) => {
   return (
@@ -18,7 +18,7 @@ const Main = (props) => {
 
 const styles = StyleSheet.create({
   view: { marginVertical: 100, alignItems: 'center' },
-  title: { color: darkGreen, fontSize: 64, marginBottom: 100, marginTop: 90 },
+  title: { color: COLORS.primary, fontSize: 64, marginBottom: 100, marginTop: 90 },
 })
 
 export default Main

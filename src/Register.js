@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Btn from './Btn'
 import Field from './Field'
-import { darkGreen, red } from './Constants'
+import COLORS from './Constants'
 import Constants from 'expo-constants'
 
 const Register = (props) => {
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 40,
-    color: darkGreen,
+    color: COLORS.primary,
     fontWeight: 'bold',
     marginBottom: 40,
   },
@@ -119,8 +119,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   callout: { fontSize: 16, fontWeight: 'bold' },
-  login: { color: darkGreen, fontWeight: 'bold', fontSize: 16 },
-  error: { color: red, fontSize: 16 },
+  login: { color: COLORS.primary, fontWeight: 'bold', fontSize: 16 },
+  error: { color: COLORS.red, fontSize: 16 },
 })
 
 export default Register

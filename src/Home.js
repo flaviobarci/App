@@ -1,7 +1,7 @@
 // home page container for HomeScreen, MyPlacesscreen and SearchScreen.js
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { darkGreen, gray, red } from './Constants';
+import COLORS from './Constants';
 
 const Home = () => {
     return(
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 40,
-        color: darkGreen,
+        color: COLORS.primary,
         fontWeight: 'bold'
     }
 })
