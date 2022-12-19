@@ -1,4 +1,4 @@
-// home page container for HomeScreen, MyPlacesscreen and SearchScreen.js
+
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import COLORS from './Constants';
