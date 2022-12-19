@@ -5,7 +5,7 @@ import Register from './Register'
 import Main from './Main'
 import Login from './Login'
 import Home from './Home'
-import HomeStackNavigator from "./navigations/BottomNavigation"
+import HomeStackNavigator from "./navigations/HomeStackNavigator"
 import { registerRootComponent } from 'expo'
 
 const Stack = createNativeStackNavigator()
