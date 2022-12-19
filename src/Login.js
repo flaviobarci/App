@@ -34,6 +34,8 @@ const Login = (props) => {
         }
         if (response.status === 404) {
           alert('User not found. Do you mean to register?')
+        } else {
+          props.navigation.navigate("Home")
         }
       })
       .catch(function (err) {
@@ -55,7 +57,7 @@ const Login = (props) => {
     } else if (password.length < 8) {
       setPasswordErrorMsg('Password is too short.')
     } else {
-      await props.navigation.navigate("Home")
+      await loginUser()
     }
   }
 
