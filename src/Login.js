@@ -35,7 +35,7 @@ const Login = (props) => {
         if (response.status === 404) {
           alert('User not found. Do you mean to register?')
         } else {
-          props.navigation.navigate("Home")
+          props.navigation.navigate('Home')
         }
       })
       .catch(function (err) {

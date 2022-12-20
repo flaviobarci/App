@@ -18,7 +18,12 @@ const Main = (props) => {
 
 const styles = StyleSheet.create({
   view: { marginVertical: 100, alignItems: 'center' },
-  title: { color: COLORS.primary, fontSize: 64, marginBottom: 100, marginTop: 90 },
+  title: {
+    color: COLORS.primary,
+    fontSize: 64,
+    marginBottom: 100,
+    marginTop: 90,
+  },
 })
 
 export default Main

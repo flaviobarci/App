@@ -4,9 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Register from './Register'
 import Main from './Main'
 import Login from './Login'
-import HomeStackNavigator from "./navigations/HomeStackNavigator"
-import MyPlacesScreen from "./navigations/screens/MyPlacesScreen"
-import SearchScreen from "./navigations/screens/SearchScreen"
+import HomeStackNavigator from './navigations/HomeStackNavigator'
+import MyPlacesScreen from './navigations/screens/MyPlacesScreen'
+import SearchScreen from './navigations/screens/SearchScreen'
 import { registerRootComponent } from 'expo'
 
 const Stack = createNativeStackNavigator()
