@@ -115,7 +115,7 @@ const HomeScreen = ({ navigation }) => {
           <Text style={style.sectionTitle}>Recommended</Text>
           <FlatList
             snapToInterval={width - 20}
-            contentContainerStyle={contentContainer2}
+            contentContainerStyle={style.contentContainer2}
             showsHorizontalScrollIndicator={false}
             horizontal
             data={places}
