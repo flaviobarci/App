@@ -20,12 +20,10 @@ import places from '../../places/places'
 const { width } = Dimensions.get('screen')
 const HomeScreen = ({ navigation }) => {
   const categoryIcons = [
-    <>
-      <Icon name="flight" size={25} color={COLORS.primary} />,
-      <Icon name="beach-access" size={25} color={COLORS.primary} />,
-      <Icon name="near-me" size={25} color={COLORS.primary} />,
-      <Icon name="place" size={25} color={COLORS.primary} />,
-    </>
+    <Icon name="flight" size={25} color={COLORS.primary} />,
+    <Icon name="beach-access" size={25} color={COLORS.primary} />,
+    <Icon name="near-me" size={25} color={COLORS.primary} />,
+    <Icon name="place" size={25} color={COLORS.primary} />,
   ]
   const ListCategories = () => {
     return (
