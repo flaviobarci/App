@@ -25,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
       <Icon name="beach-access" size={25} color={COLORS.primary} />,
       <Icon name="near-me" size={25} color={COLORS.primary} />,
       <Icon name="place" size={25} color={COLORS.primary} />,
-    </>,
+    </>
   ]
   const ListCategories = () => {
     return (
