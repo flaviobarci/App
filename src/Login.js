@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Btn from './Btn'
-import { darkGreen, gray, red } from './Constants'
+import COLORS from './Constants'
 import Constants from 'expo-constants'
 import Field from './Field'
 
@@ -10,7 +10,6 @@ const Login = (props) => {
   const [password, setPassword] = useState('')
   const [emailErrorMsg, setEmailErrorMsg] = useState('')
   const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
-
   const loginUser = async () => {
     await fetch(`${Constants.manifest?.extra?.API_URL}/login`, {
       method: 'POST',
@@ -25,7 +24,7 @@ const Login = (props) => {
     })
       .then(function (response) {
         if (response.status === 201) {
-          props.navigation.navigate('Main')
+          props.navigation.navigate('Home')
           return
         }
 
@@ -88,7 +87,7 @@ const Login = (props) => {
       <Text style={styles.error}>{passwordErrorMsg}</Text>
       <Btn
         textColor="white"
-        bgColor={darkGreen}
+        bgColor={COLORS.darkGreen}
         btnLabel="Let's go!"
         Press={handleLogin}
       />
@@ -105,16 +104,17 @@ const Login = (props) => {
 
 const styles = StyleSheet.create({
   view: {
-    marginVertical: 100,
+    marginVertical: 130,
+    marginLeft: 5,
     alignItems: 'center',
   },
   title: {
     fontSize: 40,
-    color: darkGreen,
+    color: COLORS.primary,
     fontWeight: 'bold',
   },
   subtitle: {
-    color: gray,
+    color: COLORS.grey,
     fontSize: 19,
     fontWeight: 'bold',
     marginBottom: 20,
@@ -126,8 +126,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   callout: { fontSize: 16, fontWeight: 'bold' },
-  register: { color: darkGreen, fontWeight: 'bold', fontSize: 16 },
-  error: { color: red, fontSize: 16 },
+  register: { color: COLORS.primary, fontWeight: 'bold', fontSize: 16 },
+  error: { color: COLORS.red, fontSize: 16 },
 })
 
 export default Login

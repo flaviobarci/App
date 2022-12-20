@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
-import { darkGreen, white } from './Constants'
+import COLORS from './Constants'
 
 export default function Btn({ btnLabel, Press }) {
   return (
@@ -12,7 +12,7 @@ export default function Btn({ btnLabel, Press }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: darkGreen,
+    backgroundColor: COLORS.primary,
     borderRadius: 100,
     justifyContent: 'center',
     minWidth: '70%',
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   text: {
-    color: white,
+    color: COLORS.white,
     fontSize: 15,
     fontWeight: 'bold',
   },

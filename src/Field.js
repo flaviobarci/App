@@ -1,13 +1,13 @@
 import React from 'react'
 import { TextInput, StyleSheet } from 'react-native'
-import { darkGreen, gray } from './Constants'
+import COLORS from './Constants'
 
 const Field = (props) => {
   return (
     <TextInput
       {...props}
       style={styles.field}
-      placeholderTextColor={darkGreen}
+      placeholderTextColor={COLORS.primary}
     ></TextInput>
   )
 }
@@ -15,11 +15,11 @@ const Field = (props) => {
 const styles = StyleSheet.create({
   field: {
     borderRadius: 100,
-    color: darkGreen,
+    color: COLORS.primary,
     paddingHorizontal: 15,
     width: '70%',
     height: 45,
-    backgroundColor: gray,
+    backgroundColor: COLORS.grey,
     marginVertical: 10,
   },
 })
