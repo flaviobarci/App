@@ -46,15 +46,13 @@ const HomeScreen = ({ navigation }) => {
         <ImageBackground style={style.cardImage} source={place.image}>
           <Text style={style.cardText}>{place.name}</Text>
           <View style={style.cardView}>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={style.view}>
               <Icon name="place" size={20} color={COLORS.white} />
-              <Text style={{ marginLeft: 5, color: COLORS.white }}>
-                {place.location}
-              </Text>
+              <Text style={style.text}>{place.location}</Text>
             </View>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={style.view}>
               <Icon name="star" size={20} color={COLORS.white} />
-              <Text style={{ marginLeft: 5, color: COLORS.white }}>5.0</Text>
+              <Text style={style.text}>5.0</Text>
             </View>
           </View>
         </ImageBackground>
@@ -65,66 +63,38 @@ const HomeScreen = ({ navigation }) => {
   const RecommendedCard = ({ place }) => {
     return (
       <ImageBackground style={style.rmCardImage} source={place.image}>
-        <Text
-          style={{
-            color: COLORS.white,
-            fontSize: 22,
-            fontWeight: 'bold',
-            marginTop: 10,
-          }}
-        >
-          {place.name}
-        </Text>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-          }}
-        >
-          <View style={{ width: '100%', flexDirection: 'row', marginTop: 10 }}>
-            <View style={{ flexDirection: 'row' }}>
+        <Text style={style.cardText}>{place.name}</Text>
+        <View style={style.cardView}>
+          <View style={style.view2}>
+            <View style={style.view}>
               <Icon name="place" size={22} color={COLORS.white} />
-              <Text style={{ color: COLORS.white, marginLeft: 5 }}>
-                {place.location}
-              </Text>
+              <Text style={style.text}>{place.location}</Text>
             </View>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={style.view}>
               <Icon name="star" size={22} color={COLORS.white} />
-              <Text style={{ color: COLORS.white, marginLeft: 5 }}>5.0</Text>
+              <Text style={style.text}>5.0</Text>
             </View>
           </View>
-          <Text style={{ color: COLORS.white, fontSize: 13 }}>
-            {place.details}
-          </Text>
+          <Text style={style.detailsText}>{place.details}</Text>
         </View>
       </ImageBackground>
     )
   }
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+    <SafeAreaView style={style.safeArea}>
       <StatusBar translucent={false} backgroundColor={COLORS.primary} />
       <View style={style.header}>
         <Icon name="sort" size={28} color={COLORS.white} />
         <Icon name="notifications-none" size={28} color={COLORS.white} />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            backgroundColor: COLORS.primary,
-            height: 120,
-            paddingHorizontal: 20,
-          }}
-        >
-          <View style={{ flex: 1 }}>
+        <View style={style.view3}>
+          <View style={style.view4}>
             <Text style={style.headerTitle}>Explore</Text>
             <Text style={style.headerTitle}>beautiful places</Text>
             <View style={style.inputContainer}>
               <Icon name="search" size={28} />
-              <TextInput
-                placeholder="Search place"
-                style={{ color: COLORS.grey }}
-              />
+              <TextInput placeholder="Search place" style={style.textInput} />
             </View>
           </View>
         </View>
@@ -132,7 +102,7 @@ const HomeScreen = ({ navigation }) => {
         <Text style={style.sectionTitle}>Places</Text>
         <View>
           <FlatList
-            contentContainerStyle={{ paddingLeft: 20 }}
+            contentContainerStyle={style.contentContainer}
             horizontal
             showsHorizontalScrollIndicator={false}
             data={places}
@@ -141,7 +111,7 @@ const HomeScreen = ({ navigation }) => {
           <Text style={style.sectionTitle}>Recommended</Text>
           <FlatList
             snapToInterval={width - 20}
-            contentContainerStyle={{ paddingLeft: 20, paddingBottom: 20 }}
+            contentContainerStyle={contentContainer2}
             showsHorizontalScrollIndicator={false}
             horizontal
             data={places}
@@ -225,6 +195,44 @@ const style = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'flex-end',
+  },
+  text: {
+    marginLeft: 5,
+    color: COLORS.white,
+  },
+  view: {
+    flexDirection: 'row',
+  },
+  view2: {
+    width: '100%',
+    flexDirection: 'row',
+    marginTop: 10,
+  },
+  view3: {
+    backgroundColor: COLORS.primary,
+    height: 120,
+    paddingHorizontal: 20,
+  },
+  view4: {
+    flex: 1,
+  },
+  detailsText: {
+    color: COLORS.white,
+    fontSize: 13,
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+  },
+  textInput: {
+    color: COLORS.grey,
+  },
+  contentContainer: {
+    paddingLeft: 20,
+  },
+  contentContainer2: {
+    paddingLeft: 20,
+    paddingBottom: 20,
   },
 })
 export default HomeScreen
