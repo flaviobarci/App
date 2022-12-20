@@ -37,7 +37,7 @@ const BottomTabNavigator = () => {
                     )
                 }}
             />
-            <Tab.Screen
+            {/*<Tab.Screen
                 name="My Places"
                 component={MyPlacesScreen} 
                 options={{
@@ -65,7 +65,7 @@ const BottomTabNavigator = () => {
                         />
                     )
                 }}
-            />
+            />*/}
 
                 
         </Tab.Navigator>
