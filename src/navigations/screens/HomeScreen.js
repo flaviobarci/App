@@ -1,7 +1,4 @@
 import * as React from 'react';
-
-
-
 import {
   SafeAreaView,
   ScrollView,
@@ -15,7 +12,6 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../Constants';
@@ -49,21 +45,11 @@ const HomeScreen = ({navigation}) => {
         onPress={() => navigation.navigate('MyPlacesScreen', place)}>
         <ImageBackground style={style.cardImage} source={place.image}>
           <Text
-            style={{
-              color: COLORS.white,
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginTop: 10,
-            }}>
+            style={style.cardText}>
             {place.name}
           </Text>
           <View
-            style={{
-              flex: 1,
-              justifyContent: 'space-between',
-              flexDirection: 'row',
-              alignItems: 'flex-end',
-            }}>
+            style={style.cardView}>
             <View style={{flexDirection: 'row'}}>
               <Icon name="place" size={20} color={COLORS.white} />
               <Text style={{marginLeft: 5, color: COLORS.white}}>
@@ -228,6 +214,18 @@ const style = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     padding: 10,
+  },
+  cardText: {
+    color: COLORS.white,
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  cardView: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
   },
 });
 export default HomeScreen;

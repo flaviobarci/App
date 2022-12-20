@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import COLORS from '../../Constants';
 
 export default function MyPlacesScreen({ navigation }) {
     return (
         <View style={style.header}>
-            <Text
-                onPress={() => navigation.navigate('Home')}
-                style={{ fontSize: 26, fontWeight: 'bold' }}>
+            <Text>
                 My places
             </Text>
         </View>

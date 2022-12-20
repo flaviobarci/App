@@ -1,9 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import {Image} from 'react-native';
-
-import Home from '../Home.js';
+import {Image, StyleSheet} from 'react-native';
 import HomeScreen from './screens/HomeScreen.js';
 import MyPlacesScreen from './screens/MyPlacesScreen.js';
 import SearchScreen from './screens/SearchScreen.js';
@@ -30,23 +28,21 @@ const BottomTabNavigator = () => {
                     headerShown:false,
                     tabBarLabel:"Home",
                     tabBarIcon:({color, size}) => (
-                        <Image
+                        <Image style={style.image}
                             source={require("../icons/home.png")}
-                            style={{ height:20, width:20 }}
                         />
                     )
                 }}
             />
-            {/*<Tab.Screen
+            <Tab.Screen
                 name="My Places"
                 component={MyPlacesScreen} 
                 options={{
                     headerShown:false,
                     tabBarLabel:"My Places",
                     tabBarIcon:({color, size}) => (
-                        <Image
+                        <Image style={style.image}
                             source={require("../icons/pointer.png")}
-                            style={{ height:20, width:20 }}
                         />
                     )
                 }}
@@ -59,13 +55,12 @@ const BottomTabNavigator = () => {
                     headerShown:false,
                     tabBarLabel:"Search",
                     tabBarIcon:({color, size}) => (
-                        <Image
+                        <Image style={style.image}
                             source={require("../icons/search.png")}
-                            style={{ height:20, width:20 }}
                         />
                     )
                 }}
-            />*/}
+            />
 
                 
         </Tab.Navigator>
@@ -86,6 +81,15 @@ const HomeStackNavigator = () => {
         </Stack.Navigator>
     )
 };
+
+
+const style = StyleSheet.create({
+    image: {
+        height:20, 
+        width:20 
+    },
+    
+})
 
 export default HomeStackNavigator;
 
