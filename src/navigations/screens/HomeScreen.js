@@ -19,7 +19,7 @@ import places from '../../places/places'
 
 const { width } = Dimensions.get('screen')
 const HomeScreen = ({ navigation }) => {
-  let categoryIcons = []
+  const categoryIcons = []
   categoryIcons.push(<Icon name="flight" size={25} color={COLORS.primary} />)
   categoryIcons.push(
     <Icon name="beach-access" size={25} color={COLORS.primary} />
