@@ -10,7 +10,6 @@ const Login = (props) => {
   const [password, setPassword] = useState('')
   const [emailErrorMsg, setEmailErrorMsg] = useState('')
   const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
-
   const loginUser = async () => {
     await fetch(`${Constants.manifest?.extra?.API_URL}/login`, {
       method: 'POST',
@@ -25,7 +24,7 @@ const Login = (props) => {
     })
       .then(function (response) {
         if (response.status === 201) {
-          props.navigation.navigate('Main')
+          props.navigation.navigate('Home')
           return
         }
 
@@ -34,8 +33,6 @@ const Login = (props) => {
         }
         if (response.status === 404) {
           alert('User not found. Do you mean to register?')
-        } else {
-          props.navigation.navigate('Home')
         }
       })
       .catch(function (err) {

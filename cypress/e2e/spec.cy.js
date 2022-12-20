@@ -110,9 +110,8 @@ describe('Login Tests', () => {
     cy.get('[placeholder="Password"]').type('password')
 
     cy.contains("Let's go!").click()
-    cy.contains('UnReveal').should('be.visible')
-    cy.contains('Login').should('be.visible')
-    cy.contains('Register').should('be.visible')
+    cy.contains('Explore').should('be.visible')
+    cy.contains('beautiful places').should('be.visible')
   })
 
   it('should not login with wrong email', () => {
