@@ -24,7 +24,7 @@ jobs:
         token: ${{ secrets.EXPO_TOKEN }}
       
     - name: Expo build
-      run: eas build --platform android --local
+      run: eas build --platform android --profile release --local
     
     - name: Create release
       run: gh release create v$(npm pkg get version | sed 's/"//g') build.apk --generate-notes
