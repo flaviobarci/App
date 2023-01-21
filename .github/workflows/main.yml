@@ -22,6 +22,9 @@ jobs:
         expo-version: latest
         eas-version: latest
         token: ${{ secrets.EXPO_TOKEN }}
+        
+    - name: expo doc
+      run: expo doctor --fix-dependencies
       
     - name: Expo build
       run: eas build --platform android --profile release --local
