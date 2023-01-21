@@ -27,9 +27,9 @@ jobs:
       run: expo doctor --fix-dependencies
       
     - name: Expo build
-      run: eas build --platform android --profile release --output=$GITHUB_WORKSPACE --local
+      run: eas build --platform android --profile release --local
     
     - name: Create release
-      run: gh release create v$(npm pkg get version | sed 's/"//g') $GITHUB_WORKSPACE/*.apk --generate-notes
+      run: gh release create v$(npm pkg get version | sed 's/"//g') $GITHUB_WORKSPACE/App/*.apk --generate-notes
       env:
           GITHUB_TOKEN: ${{ secrets.E }}
