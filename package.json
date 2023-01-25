@@ -13,7 +13,6 @@
     "deploy": "gh-pages -d web-build",
     "predeploy": "expo export:web",
     "np": "np --no-publish",
-    "postversion": "react-native-version",
     "eslint-check": "eslint ."
   },
   "repository": {
