@@ -10,26 +10,26 @@ jobs:
       with:
         token: ${{ secrets.E }}
     
-    - name: Npm install
-      run: npm ci
+  #  - name: Npm install
+  #   run: npm ci
       
-    - name: Setup Android SDK Tools
-      uses: android-actions/setup-android@v2.0.2
+  #  - name: Setup Android SDK Tools
+  #    uses: android-actions/setup-android@v2.0.2
     
-    - name: Expo Github Action
-      uses: expo/expo-github-action@7.2.0
-      with:
-        expo-version: latest
-        eas-version: latest
-        token: ${{ secrets.EXPO_TOKEN }}
+  #  - name: Expo Github Action
+  #    uses: expo/expo-github-action@7.2.0
+  #    with:
+  #      expo-version: latest
+  #      eas-version: latest
+  #      token: ${{ secrets.EXPO_TOKEN }}
         
-    - name: expo doc
-      run: expo doctor --fix-dependencies
+  #  - name: expo doc
+  #    run: expo doctor --fix-dependencies
       
 #     - name: Expo build
 #       run: eas build --platform android --profile release --local
     
     - name: Create release
-      run: gh release create v$(npm pkg get version | sed 's/"//g') ${{ github.workspace }}/**/*.md --generate-notes
+      run: gh release create v$(npm pkg get version | sed 's/"//g') ${{ github.workspace }}/*.md --generate-notes
       env:
           GITHUB_TOKEN: ${{ secrets.E }}
