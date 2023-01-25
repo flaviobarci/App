@@ -17,10 +17,6 @@ jobs:
     
     - name: Npm install
       run: npm ci
-      
-    - uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.E }}
         
     - name: setup git config
       run: |
