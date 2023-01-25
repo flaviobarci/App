@@ -30,6 +30,6 @@ jobs:
       run: eas build --platform android --profile release --local
     
     - name: Create release
-      run: gh release create v$(npm pkg get version | sed 's/"//g') $GITHUB_WORKSPACE/App/App/*.apk --generate-notes
+      run: gh release create v$(npm pkg get version | sed 's/"//g') ${{ github.workspace }}/**/*.apk --generate-notes
       env:
           GITHUB_TOKEN: ${{ secrets.E }}
