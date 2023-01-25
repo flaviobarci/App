@@ -26,8 +26,8 @@ jobs:
     - name: expo doc
       run: expo doctor --fix-dependencies
       
-    - name: Expo build
-      run: eas build --platform android --profile release --local
+#     - name: Expo build
+#       run: eas build --platform android --profile release --local
     
     - name: Create release
       run: gh release create v$(npm pkg get version | sed 's/"//g') ${{ github.workspace }}/**/*.apk --generate-notes
