@@ -3,6 +3,9 @@ on:
   milestone:
     types: [closed]
 jobs:
+  build-ios:
+    runs-on: macos-latest
+    
   build-android:
     runs-on: ubuntu-latest
     steps:
