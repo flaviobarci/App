@@ -5,6 +5,9 @@ on:
 jobs:
   build-ios:
     runs-on: macos-latest
+    steps:
+    - name: Placeholder
+      run: echo "Hello!"
     
   build-android:
     runs-on: ubuntu-latest
