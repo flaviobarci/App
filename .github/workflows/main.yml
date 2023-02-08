@@ -31,6 +31,9 @@ jobs:
     
     - name: Create Cert File
       run: echo ${{ secrets.P12_CERT }} | base64 -d > dist-cert.p12
+      
+    - name: Create mobile provision
+      run: echo ${{ secrets.MOBILE_PROVISION }} | base64 -d > tesste.mobileprovision
     
     - name: Expo build
       run: eas build --platform ios --profile release --local
