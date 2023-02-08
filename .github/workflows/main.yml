@@ -30,10 +30,13 @@ jobs:
         token: ${{ secrets.EXPO_TOKEN }}
     
     - name: Create Cert File
-      run: echo ${{ secrets.P12_CERT }} | base64 -d > dist-cert.p12
+      run: |
+        mkdir -p ios/certs
+        echo ${{ secrets.P12_CERT }} | base64 -d > ios/certs/dist-cert.p12
       
     - name: Create mobile provision
-      run: echo ${{ secrets.MOBILE_PROVISION }} | base64 -d > tesste.mobileprovision
+      run: |
+        echo ${{ secrets.MOBILE_PROVISION }} | base64 -d > ios/certs/profile.mobileprovision
     
     - name: Expo build
       run: eas build --platform ios --profile release --local
