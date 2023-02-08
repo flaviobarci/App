@@ -8,6 +8,10 @@
   "orientation": "portrait",
   "related_applications": [
     {
+      "platform": "itunes",
+      "id": "com.tesst.deubom"
+    },
+    {
       "platform": "play",
       "url": "http://play.google.com/store/apps/details?id=com.lbeghini.myapp",
       "id": "com.lbeghini.myapp"
