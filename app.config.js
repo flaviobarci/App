@@ -3,7 +3,7 @@ import 'dotenv/config'
 export default {
   expo: {
     name: 'my-app',
-    slug: 'my-app',
+    slug: 'app-tesste',
     entryPoint: './src/App.js',
     version: '1.0.1-1',
     orientation: 'portrait',
