@@ -12,6 +12,7 @@
     },
     "release": {
       "android": {
+        "credentialsSource": "local",
         "buildType": "apk"
       }
     },
