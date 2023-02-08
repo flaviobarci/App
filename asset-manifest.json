@@ -4,8 +4,8 @@
     "app.js.map": "/App/static/js/app.eafd9016.chunk.js.map",
     "runtime~app.js": "/App/static/js/runtime~app.b3bea265.js",
     "runtime~app.js.map": "/App/static/js/runtime~app.b3bea265.js.map",
-    "static/js/2.5d38baa2.chunk.js": "/App/static/js/2.5d38baa2.chunk.js",
-    "static/js/2.5d38baa2.chunk.js.map": "/App/static/js/2.5d38baa2.chunk.js.map",
+    "static/js/2.4b382e84.chunk.js": "/App/static/js/2.4b382e84.chunk.js",
+    "static/js/2.4b382e84.chunk.js.map": "/App/static/js/2.4b382e84.chunk.js.map",
     "fonts/MaterialIcons.ttf": "/App/./fonts/MaterialIcons.ttf",
     "favicon-16.png": "/App/favicon-16.png",
     "favicon-32.png": "/App/favicon-32.png",
@@ -13,7 +13,7 @@
     "index.html": "/App/index.html",
     "manifest.json": "/App/manifest.json",
     "serve.json": "/App/serve.json",
-    "static/js/2.5d38baa2.chunk.js.LICENSE.txt": "/App/static/js/2.5d38baa2.chunk.js.LICENSE.txt",
+    "static/js/2.4b382e84.chunk.js.LICENSE.txt": "/App/static/js/2.4b382e84.chunk.js.LICENSE.txt",
     "static/media/home.png": "/App/static/media/home.1bf413bb.png",
     "static/media/location1.jpg": "/App/static/media/location1.c94a4e52.jpg",
     "static/media/location2.jpg": "/App/static/media/location2.86585cb6.jpg",
@@ -24,7 +24,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.b3bea265.js",
-    "static/js/2.5d38baa2.chunk.js",
+    "static/js/2.4b382e84.chunk.js",
     "static/js/app.eafd9016.chunk.js"
   ]
 }
