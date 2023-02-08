@@ -36,7 +36,7 @@ export default {
     extra: {
       API_URL: process.env.API_URL,
       eas: {
-        projectId: 'f7134fcd-83b8-4bec-8429-f164455d3981',
+        projectId: '95b3c61e-eb08-43c5-aea7-966bb0666049',
       },
     },
     owner: 'lbeghini',
