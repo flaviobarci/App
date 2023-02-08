@@ -32,11 +32,11 @@ jobs:
     - name: Create Cert File
       run: |
         mkdir -p ios/certs
-        echo -n ${{ secrets.P12_CERT }} | base64 -d > ios/certs/dist-cert.p12
+        echo -n "${{ secrets.P12_CERT }}" | base64 -d > ios/certs/dist-cert.p12
       
     - name: Create mobile provision
       run: |
-        echo -n ${{ secrets.MOBILE_PROVISION }} | base64 -d > ios/certs/profile.mobileprovision
+        echo -n "${{ secrets.MOBILE_PROVISION }}" | base64 -d > ios/certs/profile.mobileprovision
     
     - name: Expo build
       run: eas build --platform ios --profile release --local
