@@ -21,6 +21,8 @@ export default {
     ios: {
       supportsTablet: true,
       buildNumber: '2',
+      bundleIdentifier: "com.tesst.deubom"
+   },
     },
     android: {
       adaptiveIcon: {
