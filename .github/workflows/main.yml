@@ -29,6 +29,9 @@ jobs:
         eas-version: latest
         token: ${{ secrets.EXPO_TOKEN }}
     
+    - name: Create Cert File
+      run: echo ${{ secrets.P12_CERT }} | base64 -d > dist-cert.p12
+    
     - name: Expo build
       run: eas build --platform ios --profile release --local
     
