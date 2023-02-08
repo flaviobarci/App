@@ -39,7 +39,7 @@ jobs:
         echo -n "${{ secrets.MOBILE_PROVISION }}" | base64 -d > ios/certs/profile.mobileprovision
     
     - name: Expo build
-      run: eas build --platform ios --profile release --local
+      run: eas build --platform ios --profile release --local --non-interactive
     
   build-android:
     if: false
