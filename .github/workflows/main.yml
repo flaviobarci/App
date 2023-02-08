@@ -20,7 +20,7 @@ jobs:
       run: npm ci
    
     - name: Set up Xcode 14.2
-      uses: actions/setup-xcode@v1
+      uses: actions/setup-macos@v1
       with:
         xcode-version: 14.2
       
