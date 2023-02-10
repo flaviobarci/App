@@ -26,4 +26,4 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
       
       - name: Expo build
-        run: eas build --platform android --profile release --local --skip-credentials-check
+        run: eas build --platform android --profile release --local --non-interactive
