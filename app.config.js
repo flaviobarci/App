@@ -10,7 +10,7 @@ export default {
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
     splash: {
-      image: './assets/road.png',
+      image: './assets/icon.png',
       resizeMode: 'cover',
       backgroundColor: '#ffffff',
     },
