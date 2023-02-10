@@ -12,11 +12,10 @@
     },
     "release": {
       "android": {
-        "credentialsSource": "local",
         "buildType": "apk"
       },
       "ios": {
-        "credentialsSource": "local",
+        "simulator": true
       }
     },
     "production": {}

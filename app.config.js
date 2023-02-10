@@ -2,7 +2,7 @@ import 'dotenv/config'
 
 export default {
   expo: {
-    name: 'my-app',
+    name: 'app-tesste',
     slug: 'app-tesste',
     entryPoint: './src/App.js',
     version: '1.0.1-1',
