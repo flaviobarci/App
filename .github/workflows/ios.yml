@@ -50,3 +50,9 @@ jobs:
     
     - name: Expo build
       run: eas build --platform ios --profile release --local --non-interactive
+      
+    - name: Upload math result for job 1
+      uses: actions/upload-artifact@v3
+      with:
+        name: iosApp
+        path:  ${{ github.workspace }}/*tar.gz
