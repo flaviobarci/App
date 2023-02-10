@@ -1,29 +1,23 @@
-import * as React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Register from './Register'
-import Main from './Main'
-import Login from './Login'
-import HomeStackNavigator from './navigations/HomeStackNavigator'
-import MyPlacesScreen from './navigations/screens/MyPlacesScreen'
-import SearchScreen from './navigations/screens/SearchScreen'
-import { registerRootComponent } from 'expo'
-
-const Stack = createNativeStackNavigator()
+import { registerRootComponent } from 'expo';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Main" component={Main} />
-        <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={HomeStackNavigator} />
-        <Stack.Screen name="MyPlacesScreen" component={MyPlacesScreen} />
-        <Stack.Screen name="SearchScreen" component={SearchScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
 }
 
-export default registerRootComponent(App)
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+export default registerRootComponent(App);
