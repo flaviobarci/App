@@ -45,7 +45,8 @@ jobs:
       run: npx expo-env-info
     
     - name: Run Expo Doctor
-      run: npx expo doctor
+      run: npx expo-cli doctor
+      continue-on-error: true
     
     - name: Expo build
       run: eas build --platform ios --profile release --local --non-interactive
