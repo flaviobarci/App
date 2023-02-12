@@ -50,8 +50,7 @@ jobs:
     
     - name: Run Expo Doctor
       run: expo doctor
-      continue-on-error: true
-    
+      
     - name: Expo build
       run: eas build --platform ios --profile release --local --non-interactive
       
