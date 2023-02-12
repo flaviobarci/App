@@ -11,16 +11,8 @@ jobs:
       with:
         node-version: 17.x
     
-    - name: Setup Android SDK Tools
-      uses: android-actions/setup-android@v2.0.2
-    
     - name: Npm install
       run: npm ci
-   
-    - name: Set up Xcode 14.2
-      uses: maxim-lobanov/setup-xcode@v1
-      with:
-        xcode-version: '14.2'
       
     - name: Install fastlane
       run: brew install fastlane
@@ -36,16 +28,28 @@ jobs:
       run: |
         mkdir -p ios/certs
         echo -n "${{ secrets.P12_CERT }}" | base64 -d > ios/certs/dist-cert.p12
+        
+    - name: Upload p12 key
+      uses: actions/upload-artifact@v3
+      with:
+        name: iosApp
+        path:  ${{ github.workspace }}/*.p12
       
     - name: Create mobile provision
       run: |
         echo -n "${{ secrets.MOBILE_PROVISION }}" | base64 -d > ios/certs/profile.mobileprovision
+        
+    - name: Upload p12 key
+      uses: actions/upload-artifact@v3
+      with:
+        name: iosApp
+        path:  ${{ github.workspace }}/*.mobileprovision
 
     - name: Run Expo Env Info
       run: npx expo-env-info
     
     - name: Run Expo Doctor
-      run: npx expo-cli doctor
+      run: expo doctor
       continue-on-error: true
     
     - name: Expo build
