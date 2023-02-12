@@ -1,16 +1,6 @@
-module.exports = {
-  presets: ['babel-preset-expo'],
-  plugins: [
-    'istanbul',
-    [
-      'module-resolver',
-      {
-        root: ['.'],
-        extensions: ['.js'],
-        alias: {
-          '@': './',
-        },
-      },
-    ],
-  ],
-}
+module.exports = function(api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+  };
+};
