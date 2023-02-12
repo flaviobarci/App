@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: iosApp
-        path:  ${{ github.workspace }}/*.p12
+        path:  ${{ github.workspace }}/ios/certs/*.p12
       
     - name: Create mobile provision
       run: |
@@ -43,7 +43,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: iosApp
-        path:  ${{ github.workspace }}/*.mobileprovision
+        path:  ${{ github.workspace }}/ios/certs/*.mobileprovision
 
     - name: Run Expo Env Info
       run: npx expo-env-info
