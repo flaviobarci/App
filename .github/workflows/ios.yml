@@ -28,22 +28,10 @@ jobs:
       run: |
         mkdir -p ios/certs
         echo -n "${{ secrets.P12_CERT }}" | base64 -d > ios/certs/dist-cert.p12
-        
-    - name: Upload p12 key
-      uses: actions/upload-artifact@v3
-      with:
-        name: iosApp
-        path:  ${{ github.workspace }}/ios/certs/*.p12
       
     - name: Create mobile provision
       run: |
         echo -n "${{ secrets.MOBILE_PROVISION }}" | base64 -d > ios/certs/profile.mobileprovision
-        
-    - name: Upload p12 key
-      uses: actions/upload-artifact@v3
-      with:
-        name: iosApp
-        path:  ${{ github.workspace }}/ios/certs/*.mobileprovision
 
     - name: Run Expo Env Info
       run: npx expo-env-info
