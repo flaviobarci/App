@@ -6,7 +6,7 @@ on:
 jobs:
   my-job:
     runs-on: ubuntu-latest
-    if: "contains(github.actor, 'flaviobarci')"
+    if: contains(github.actor, 'flaviobarci') == false
     steps:
     - name: Hello
       run: echo "hello"
